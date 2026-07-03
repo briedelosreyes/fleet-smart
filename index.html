@@ -1,12 +1,1012 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fleet Smart by iAutoAgent</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Fleet Smart by iAutoAgent | Fleet Buying, Selling & Protection</title>
+
+  <meta name="description" content="Fleet Smart by iAutoAgent helps service businesses buy, sell, protect, and coordinate fleet vehicles without dealership games, wasted time, or leaving money on the table." />
+
+  <style>
+    :root {
+      --purple: #612d91;
+      --purple-dark: #421b66;
+      --green: #7fbf3f;
+      --green-dark: #5b9429;
+      --ink: #151515;
+      --muted: #5f6370;
+      --light: #f7f4fb;
+      --white: #ffffff;
+      --border: #e7e1ee;
+      --shadow: 0 18px 45px rgba(33, 18, 55, 0.12);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--purple-dark);
+      color: var(--white);
+      padding: 10px 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand strong {
+      color: var(--purple);
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      font-weight: 800;
+      line-height: 1.1;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      box-shadow: 0 12px 24px rgba(97, 45, 145, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: 0 12px 24px rgba(127, 191, 63, 0.22);
+    }
+
+    .btn-secondary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--purple);
+      border-color: var(--purple);
+    }
+
+    .btn-outline:hover {
+      background: var(--light);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(127, 191, 63, 0.18), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, #f7f4fb 55%, #efe8f7 100%);
+      padding: 82px 20px 64px;
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(97, 45, 145, 0.1);
+      color: var(--purple);
+      border: 1px solid rgba(97, 45, 145, 0.16);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      margin: 0 0 22px;
+      color: var(--ink);
+    }
+
+    .hero h1 span {
+      color: var(--purple);
+    }
+
+    .hero-lede {
+      font-size: 21px;
+      color: #34313a;
+      max-width: 680px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .trust-line {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--purple), var(--green));
+    }
+
+    .hero-card h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+      line-height: 1.15;
+      color: var(--purple);
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .mini-stat {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .mini-stat div {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      color: var(--purple);
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    section {
+      padding: 72px 20px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+
+    .section-heading p {
+      margin: 0;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .problem {
+      background: var(--white);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .problem-card,
+    .service-card,
+    .case-card,
+    .process-card,
+    .testimonial-card,
+    .faq-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 26px rgba(33, 18, 55, 0.07);
+      padding: 24px;
+    }
+
+    .problem-card h3,
+    .service-card h3,
+    .case-card h3,
+    .process-card h3,
+    .testimonial-card h3,
+    .faq-card h3 {
+      margin: 0 0 10px;
+      color: var(--purple);
+      line-height: 1.2;
+      font-size: 21px;
+    }
+
+    .problem-card p,
+    .service-card p,
+    .case-card p,
+    .process-card p,
+    .testimonial-card p,
+    .faq-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .services {
+      background: var(--light);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--white);
+    }
+
+    .service-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .proof {
+      background: var(--white);
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+
+    .proof-box {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+      border-radius: 22px;
+      padding: 26px;
+      min-height: 152px;
+    }
+
+    .proof-box strong {
+      display: block;
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .proof-box span {
+      display: block;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .case-tag {
+      width: fit-content;
+      background: rgba(127, 191, 63, 0.14);
+      color: var(--green-dark);
+      border: 1px solid rgba(127, 191, 63, 0.25);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .case-card h3 {
+      margin-bottom: 0;
+    }
+
+    .case-metric {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--purple);
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .process {
+      background: var(--light);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .process-card {
+      background: var(--white);
+      padding: 20px;
+    }
+
+    .process-card .step {
+      color: var(--green-dark);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .testimonials {
+      background: var(--white);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .testimonial-card a {
+      margin-top: 16px;
+      display: inline-flex;
+      color: var(--purple);
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .faq {
+      background: var(--light);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cta {
+      background:
+        radial-gradient(circle at top right, rgba(127, 191, 63, 0.25), transparent 32%),
+        linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin: 0 0 18px;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      font-size: 19px;
+      opacity: 0.94;
+    }
+
+    .cta .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.72);
+    }
+
+    .cta .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    footer {
+      background: #111111;
+      color: rgba(255, 255, 255, 0.78);
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--white);
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .proof-strip,
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .case-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        font-size: 13px;
+      }
+
+      .nav-inner {
+        padding: 14px 16px;
+      }
+
+      .brand strong {
+        font-size: 19px;
+      }
+
+      .hero {
+        padding: 58px 18px 48px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .mini-stat,
+      .problem-grid,
+      .service-grid,
+      .proof-strip,
+      .case-grid,
+      .process-grid,
+      .testimonial-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 54px 18px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Fleet Smart by iAutoAgent</h1>
-  <p>Landing page coming soon.</p>
+  <div class="topbar">
+    Fleet buying, selling, protection, and coordination for service businesses.
+  </div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Fleet Smart by iAutoAgent">
+        <strong>Fleet Smart</strong>
+        <span>by iAutoAgent</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#proof">Case Studies</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-primary" href="tel:6366143711">Call or Text Us</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Fleet Smart by iAutoAgent</div>
+
+          <h1>Your fleet is either making you money or <span>quietly costing you money.</span></h1>
+
+          <p class="hero-lede">
+            Fleet Smart helps service businesses buy the right vehicles, sell aging fleet units for stronger returns,
+            protect against major repair shocks, and keep the whole process off your plate.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:6366143711">Call or Text 636-614-3711</a>
+            <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>
+          </div>
+
+          <p class="trust-line">
+            Built for contractors, service companies, fleet managers, and business owners who cannot afford vehicle mistakes.
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <h2>Hands-off fleet help for busy operators.</h2>
+          <p>
+            You keep your team focused on the business. We handle the vehicle research, selling strategy,
+            buyer screening, negotiation, paperwork coordination, and protection-plan review.
+          </p>
+
+          <div class="mini-stat">
+            <div>
+              <strong>$200K+</strong>
+              <span>Recovered for one fleet client over five years.</span>
+            </div>
+            <div>
+              <strong>36</strong>
+              <span>Fleet vehicles sold for Rottler Pest Solutions.</span>
+            </div>
+            <div>
+              <strong>25 hrs</strong>
+              <span>From first call to keys in hand for Horizon Sign Company.</span>
+            </div>
+            <div>
+              <strong>20–30%</strong>
+              <span>Higher sale prices seen in fleet selling outcomes.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>Most companies lose money on vehicles in three places.</h2>
+          <p>
+            The problem is rarely one bad deal. It is a weak system repeated across every purchase, sale, repair decision,
+            and replacement cycle.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card">
+            <h3>Selling too low</h3>
+            <p>
+              Trade-ins, auctions, and leasing-company buybacks are easy. They can also leave thousands of dollars behind
+              on each truck or van.
+            </p>
+          </article>
+
+          <article class="problem-card">
+            <h3>Buying under pressure</h3>
+            <p>
+              When a vehicle goes down, owners rush. Rushed buying creates bad pricing, poor fit, weak warranty choices,
+              and downtime.
+            </p>
+          </article>
+
+          <article class="problem-card">
+            <h3>Repair bills with no plan</h3>
+            <p>
+              One major transmission, engine, or electrical failure can hit cash flow hard. Two at once can wreck a month.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2>What Fleet Smart handles</h2>
+          <p>
+            Choose the support you need now, then build a smarter fleet process over time.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-number">1</div>
+            <h3>Fleet Sell Smart</h3>
+            <p>
+              We help you sell aging trucks and vans for stronger returns while handling presentation, buyers,
+              communication, negotiation, and transaction coordination.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">2</div>
+            <h3>Fleet Vehicle Finder</h3>
+            <p>
+              We find, vet, negotiate, and coordinate the purchase of business vehicles so you do not waste days chasing
+              listings or sitting in dealerships.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">3</div>
+            <h3>Vehicle Protection Plans</h3>
+            <p>
+              We review which vehicles are worth protecting, which ones are not, and how to reduce surprise repair exposure.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">4</div>
+            <h3>Fleet Coordination</h3>
+            <p>
+              We help owners and fleet managers make better timing decisions around replacement, resale, protection,
+              and vehicle selection.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" id="proof">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>Real fleet results</h2>
+          <p>
+            These are the kinds of problems Fleet Smart was built to solve.
+          </p>
+        </div>
+
+        <div class="proof-strip">
+          <div class="proof-box">
+            <strong>$200K+</strong>
+            <span>Total recovered for Rottler Pest Solutions over five years.</span>
+          </div>
+
+          <div class="proof-box">
+            <strong>$8,900</strong>
+            <span>Average gap recovered per truck in the Rottler example.</span>
+          </div>
+
+          <div class="proof-box">
+            <strong>$5,732</strong>
+            <span>Horizon Sign Company was better off versus doing it alone.</span>
+          </div>
+
+          <div class="proof-box">
+            <strong>$16K</strong>
+            <span>Immediate repair risk addressed for an electrical contractor.</span>
+          </div>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="case-tag">Fleet Sell Smart</div>
+            <h3>Rottler Pest Solutions</h3>
+            <p>
+              Rottler had trucks being bought back low and resold much higher. iAutoAgent took over the selling process
+              and helped recover serious value across the fleet.
+            </p>
+            <div class="case-metric">$200,000+ recovered over 5 years</div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-tag">Vehicle Finder</div>
+            <h3>Horizon Sign Company</h3>
+            <p>
+              David and Megan needed the right truck fast. We found, vetted, negotiated, and coordinated a 2019 Ford F-250
+              without wasting their workweek.
+            </p>
+            <div class="case-metric">25 hours from first call to keys</div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-tag">Nationwide Search</div>
+            <h3>Coolaire HVAC</h3>
+            <p>
+              A flooded van created an urgent replacement need. We sourced a rare 2018 Chevy Express with only 860 miles
+              from New York and coordinated delivery to Missouri.
+            </p>
+            <div class="case-metric">860-mile van sourced 1,200 miles away</div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-tag">Protection Plan</div>
+            <h3>Loveland Home Solutions</h3>
+            <p>
+              Two trucks had major repair issues at the same time. We helped identify which vehicles made sense to protect
+              and which needed a different replacement plan.
+            </p>
+            <div class="case-metric">$16,000 in immediate repair exposure</div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-tag">Finder + Protection</div>
+            <h3>David True</h3>
+            <p>
+              David needed a work-ready pickup for his handyman business. We found one with the right topper, rack,
+              Decked system, and protection plan.
+            </p>
+            <div class="case-metric">$5,000 in extras and $10,000 repair covered</div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-tag">Fleet Selling Support</div>
+            <h3>KCI Construction</h3>
+            <p>
+              KCI needed vehicle selling off the fleet manager’s plate. We reduced marketplace chaos and helped the team
+              stay focused on running the business.
+            </p>
+            <div class="case-metric">20–30% higher sale prices</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>The Fleet Smart process</h2>
+          <p>
+            Simple on your side. Detailed on ours.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="step">Step 1</div>
+            <h3>Review</h3>
+            <p>We look at your current fleet situation, vehicle needs, and pressure points.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step">Step 2</div>
+            <h3>Strategy</h3>
+            <p>We identify what to buy, sell, protect, replace, or hold.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step">Step 3</div>
+            <h3>Execution</h3>
+            <p>We handle the search, sale, screening, negotiation, and coordination.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step">Step 4</div>
+            <h3>Protection</h3>
+            <p>We review repair-risk options and protection-plan fit.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step">Step 5</div>
+            <h3>Repeat</h3>
+            <p>We help turn vehicle decisions into a cleaner fleet system.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>Fleet Smart client videos</h2>
+          <p>
+            Hear directly from business owners and fleet clients who worked with iAutoAgent.
+          </p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <h3>David True</h3>
+            <p>Fleet vehicle buying and vehicle protection plan experience.</p>
+            <a href="https://photos.app.goo.gl/3d34C3zge7fpKD6N9" target="_blank" rel="noopener">Watch buying testimonial</a>
+            <a href="https://photos.app.goo.gl/S2zHyaTRDVtpQBRz8" target="_blank" rel="noopener">Watch protection-plan testimonial</a>
+          </article>
+
+          <article class="testimonial-card">
+            <h3>David Greathouse</h3>
+            <p>Horizon Sign Company truck buying experience.</p>
+            <a href="https://youtu.be/tQrqg4TRsIU?si=uNt9L0pv8oQsB9lx" target="_blank" rel="noopener">Watch testimonial</a>
+          </article>
+
+          <article class="testimonial-card">
+            <h3>Gary Rottler</h3>
+            <p>Fleet selling experience with iAutoAgent.</p>
+            <a href="https://youtu.be/LDEgY6pOG8o?si=pVOwa-aHCTJh-F3U" target="_blank" rel="noopener">Watch testimonial</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>Good fit for Fleet Smart?</h2>
+          <p>
+            If vehicles are part of how your business makes money, the answer is probably yes.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Who is this for?</h3>
+            <p>
+              Contractors, pest control companies, HVAC companies, electricians, construction companies, delivery teams,
+              field-service businesses, and owners who run trucks or vans.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Do we have to sell multiple vehicles?</h3>
+            <p>
+              No. Fleet Smart can help with one vehicle, a group of vehicles, or a long-term replacement plan.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Can you help us buy nationwide?</h3>
+            <p>
+              Yes. If the right truck or van is not local, we can search broader markets and help coordinate the details.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Do you only help with selling?</h3>
+            <p>
+              No. Fleet Smart covers buying, selling, protection-plan review, and fleet vehicle coordination.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="section-inner">
+        <h2>Stop guessing on fleet vehicles.</h2>
+        <p>
+          If your trucks and vans affect revenue, cash flow, staffing, or service capacity, you need a cleaner system.
+          Start with a Fleet Smart review.
+        </p>
+
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="btn btn-secondary" href="tel:6366143711">Call or Text 636-614-3711</a>
+          <a class="btn btn-outline" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Fleet Smart by iAutoAgent</strong><br />
+    Fleet buying, selling, protection, and coordination for service businesses.
+  </footer>
 </body>
 </html>
