@@ -20,6 +20,7 @@
       --white: #ffffff;
       --border: #e7e1ee;
       --shadow: 0 18px 45px rgba(33, 18, 55, 0.12);
+      --shadow-strong: 0 26px 60px rgba(33, 18, 55, 0.2);
       --radius: 18px;
       --max: 1180px;
     }
@@ -40,9 +41,17 @@
       line-height: 1.6;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     .topbar {
@@ -320,7 +329,6 @@
 
     .problem-card,
     .service-card,
-    .case-card,
     .process-card,
     .testimonial-card,
     .faq-card {
@@ -333,7 +341,6 @@
 
     .problem-card h3,
     .service-card h3,
-    .case-card h3,
     .process-card h3,
     .testimonial-card h3,
     .faq-card h3 {
@@ -345,7 +352,6 @@
 
     .problem-card p,
     .service-card p,
-    .case-card p,
     .process-card p,
     .testimonial-card p,
     .faq-card p {
@@ -412,16 +418,40 @@
       opacity: 0.9;
     }
 
-    .case-grid {
+    .case-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 22px;
     }
 
-    .case-card {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .case-row {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(33, 18, 55, 0.08);
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .case-row:hover,
+    .case-row:focus-visible {
+      transform: scale(1.025);
+      box-shadow: var(--shadow-strong);
+      border-color: rgba(97, 45, 145, 0.35);
+      outline: none;
+    }
+
+    .case-row:focus-visible {
+      box-shadow: 0 0 0 4px rgba(97, 45, 145, 0.18), var(--shadow-strong);
+    }
+
+    .case-copy {
+      padding: 30px;
     }
 
     .case-tag {
@@ -430,25 +460,90 @@
       color: var(--green-dark);
       border: 1px solid rgba(127, 191, 63, 0.25);
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 6px 12px;
       font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      margin-bottom: 14px;
     }
 
-    .case-card h3 {
-      margin-bottom: 0;
+    .case-copy h3 {
+      margin: 0 0 10px;
+      color: var(--purple);
+      line-height: 1.15;
+      font-size: 28px;
+    }
+
+    .case-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 18px;
     }
 
     .case-metric {
-      margin-top: auto;
-      padding-top: 14px;
+      padding-top: 16px;
       border-top: 1px solid var(--border);
       color: var(--purple);
       font-weight: 900;
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.25;
+    }
+
+    .case-video-preview {
+      min-height: 245px;
+      background:
+        radial-gradient(circle at top left, rgba(127, 191, 63, 0.28), transparent 34%),
+        linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-video-preview::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 22px;
+    }
+
+    .play-badge {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    .play-circle {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      line-height: 1;
+      padding-left: 4px;
+    }
+
+    .play-badge strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .play-badge span {
+      display: block;
+      font-size: 14px;
+      opacity: 0.82;
     }
 
     .process {
@@ -536,6 +631,194 @@
       background: rgba(255, 255, 255, 0.12);
     }
 
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(14, 10, 20, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(980px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: var(--white);
+      border-radius: 26px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 14px;
+      margin-left: auto;
+      margin-right: 14px;
+      margin-top: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--purple);
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      box-shadow: 0 8px 18px rgba(33, 18, 55, 0.12);
+    }
+
+    .modal-close:hover {
+      background: var(--light);
+    }
+
+    .modal-content {
+      padding: 0 34px 34px;
+    }
+
+    .modal-header {
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 28px;
+      align-items: center;
+      padding: 8px 0 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+
+    .modal-header h2 span {
+      color: var(--purple);
+    }
+
+    .modal-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .modal-video {
+      width: 100%;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #000;
+      box-shadow: var(--shadow);
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-placeholder {
+      min-height: 230px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at top left, rgba(127, 191, 63, 0.22), transparent 34%),
+        linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .video-placeholder strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .video-placeholder span {
+      display: block;
+      opacity: 0.86;
+      font-size: 15px;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 28px;
+      padding-top: 28px;
+    }
+
+    .modal-snapshot {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      height: fit-content;
+    }
+
+    .modal-snapshot h3 {
+      color: var(--purple);
+      margin: 0 0 14px;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .modal-snapshot ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+    }
+
+    .modal-story h3 {
+      color: var(--purple);
+      font-size: 24px;
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    .modal-story p {
+      color: #34313a;
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
     footer {
       background: #111111;
       color: rgba(255, 255, 255, 0.78);
@@ -559,13 +842,21 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .case-grid,
       .testimonial-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .nav-links {
         display: none;
+      }
+
+      .case-row {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-header,
+      .modal-body {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -598,7 +889,6 @@
       .problem-grid,
       .service-grid,
       .proof-strip,
-      .case-grid,
       .process-grid,
       .testimonial-grid,
       .faq-grid {
@@ -611,6 +901,34 @@
 
       .hero-card {
         padding: 24px;
+      }
+
+      .case-copy {
+        padding: 24px;
+      }
+
+      .case-copy h3 {
+        font-size: 24px;
+      }
+
+      .case-video-preview {
+        min-height: 210px;
+      }
+
+      .modal {
+        padding: 12px;
+      }
+
+      .modal-panel {
+        border-radius: 20px;
+      }
+
+      .modal-content {
+        padding: 0 20px 24px;
+      }
+
+      .modal-close {
+        margin-right: 10px;
       }
     }
   </style>
@@ -781,7 +1099,7 @@
         <div class="section-heading center">
           <h2>Real fleet results</h2>
           <p>
-            These are the kinds of problems Fleet Smart was built to solve.
+            Click any case study below. A popup will open with the details and video area.
           </p>
         </div>
 
@@ -807,66 +1125,126 @@
           </div>
         </div>
 
-        <div class="case-grid">
-          <article class="case-card">
-            <div class="case-tag">Fleet Sell Smart</div>
-            <h3>Rottler Pest Solutions</h3>
-            <p>
-              Rottler had trucks being bought back low and resold much higher. iAutoAgent took over the selling process
-              and helped recover serious value across the fleet.
-            </p>
-            <div class="case-metric">$200,000+ recovered over 5 years</div>
-          </article>
+        <div class="case-list">
+          <button class="case-row" type="button" data-case="rottler">
+            <div class="case-copy">
+              <div class="case-tag">Fleet Sell Smart</div>
+              <h3>Rottler Pest Solutions</h3>
+              <p>
+                Rottler had trucks being bought back low and resold much higher. iAutoAgent took over the selling process
+                and helped recover serious value across the fleet.
+              </p>
+              <div class="case-metric">$200,000+ recovered over 5 years</div>
+            </div>
 
-          <article class="case-card">
-            <div class="case-tag">Vehicle Finder</div>
-            <h3>Horizon Sign Company</h3>
-            <p>
-              David and Megan needed the right truck fast. We found, vetted, negotiated, and coordinated a 2019 Ford F-250
-              without wasting their workweek.
-            </p>
-            <div class="case-metric">25 hours from first call to keys</div>
-          </article>
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Watch the Rottler testimonial</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
 
-          <article class="case-card">
-            <div class="case-tag">Nationwide Search</div>
-            <h3>Coolaire HVAC</h3>
-            <p>
-              A flooded van created an urgent replacement need. We sourced a rare 2018 Chevy Express with only 860 miles
-              from New York and coordinated delivery to Missouri.
-            </p>
-            <div class="case-metric">860-mile van sourced 1,200 miles away</div>
-          </article>
+          <button class="case-row" type="button" data-case="horizon">
+            <div class="case-copy">
+              <div class="case-tag">Vehicle Finder</div>
+              <h3>Horizon Sign Company</h3>
+              <p>
+                David and Megan needed the right truck fast. We found, vetted, negotiated, and coordinated a 2019 Ford F-250
+                without wasting their workweek.
+              </p>
+              <div class="case-metric">25 hours from first call to keys</div>
+            </div>
 
-          <article class="case-card">
-            <div class="case-tag">Protection Plan</div>
-            <h3>Loveland Home Solutions</h3>
-            <p>
-              Two trucks had major repair issues at the same time. We helped identify which vehicles made sense to protect
-              and which needed a different replacement plan.
-            </p>
-            <div class="case-metric">$16,000 in immediate repair exposure</div>
-          </article>
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Watch the Horizon testimonial</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
 
-          <article class="case-card">
-            <div class="case-tag">Finder + Protection</div>
-            <h3>David True</h3>
-            <p>
-              David needed a work-ready pickup for his handyman business. We found one with the right topper, rack,
-              Decked system, and protection plan.
-            </p>
-            <div class="case-metric">$5,000 in extras and $10,000 repair covered</div>
-          </article>
+          <button class="case-row" type="button" data-case="coolaire">
+            <div class="case-copy">
+              <div class="case-tag">Nationwide Search</div>
+              <h3>Coolaire HVAC</h3>
+              <p>
+                A flooded van created an urgent replacement need. We sourced a rare 2018 Chevy Express with only 860 miles
+                from New York and coordinated delivery to Missouri.
+              </p>
+              <div class="case-metric">860-mile van sourced 1,200 miles away</div>
+            </div>
 
-          <article class="case-card">
-            <div class="case-tag">Fleet Selling Support</div>
-            <h3>KCI Construction</h3>
-            <p>
-              KCI needed vehicle selling off the fleet manager’s plate. We reduced marketplace chaos and helped the team
-              stay focused on running the business.
-            </p>
-            <div class="case-metric">20–30% higher sale prices</div>
-          </article>
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Case study video area</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="case-row" type="button" data-case="loveland">
+            <div class="case-copy">
+              <div class="case-tag">Protection Plan</div>
+              <h3>Loveland Home Solutions</h3>
+              <p>
+                Two trucks had major repair issues at the same time. We helped identify which vehicles made sense to protect
+                and which needed a different replacement plan.
+              </p>
+              <div class="case-metric">$16,000 in immediate repair exposure</div>
+            </div>
+
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Case study video area</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="case-row" type="button" data-case="davidtrue">
+            <div class="case-copy">
+              <div class="case-tag">Finder + Protection</div>
+              <h3>David True</h3>
+              <p>
+                David needed a work-ready pickup for his handyman business. We found one with the right topper, rack,
+                Decked system, and protection plan.
+              </p>
+              <div class="case-metric">$5,000 in extras and $10,000 repair covered</div>
+            </div>
+
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Watch David’s testimonial</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="case-row" type="button" data-case="kci">
+            <div class="case-copy">
+              <div class="case-tag">Fleet Selling Support</div>
+              <h3>KCI Construction</h3>
+              <p>
+                KCI needed vehicle selling off the fleet manager’s plate. We reduced marketplace chaos and helped the team
+                stay focused on running the business.
+              </p>
+              <div class="case-metric">20–30% higher sale prices</div>
+            </div>
+
+            <div class="case-video-preview">
+              <div class="play-badge">
+                <div class="play-circle">▶</div>
+                <strong>Case study video area</strong>
+                <span>Click to open case study</span>
+              </div>
+            </div>
+          </button>
         </div>
       </div>
     </section>
@@ -1004,10 +1382,258 @@
     </section>
   </main>
 
+  <div class="modal" id="caseModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" aria-label="Close case study popup" data-close-modal>&times;</button>
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <div class="eyebrow" id="modalTag">Case Study</div>
+            <h2 id="modalTitle">Case Study Title</h2>
+            <p id="modalIntro">Case study summary.</p>
+          </div>
+
+          <div class="modal-video" id="modalVideo"></div>
+        </div>
+
+        <div class="modal-body">
+          <aside class="modal-snapshot">
+            <h3>Case Study Snapshot</h3>
+            <ul id="modalSnapshot"></ul>
+          </aside>
+
+          <article class="modal-story">
+            <h3>The situation</h3>
+            <p id="modalSituation"></p>
+
+            <h3>What iAutoAgent did</h3>
+            <p id="modalAction"></p>
+
+            <h3>The result</h3>
+            <p id="modalResult"></p>
+
+            <div class="modal-actions">
+              <a class="btn btn-primary" href="tel:6366143711">Call or Text 636-614-3711</a>
+              <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <strong>Fleet Smart by iAutoAgent</strong><br />
     Fleet buying, selling, protection, and coordination for service businesses.
   </footer>
+
+  <script>
+    const caseStudies = {
+      rottler: {
+        tag: "Fleet Sell Smart",
+        title: "Rottler Pest Solutions recovered $200,000+ from aging fleet vehicles.",
+        intro: "Rottler had been selling trucks back low while someone else captured the resale value. Fleet Smart helped turn those aging trucks into stronger returns.",
+        video: "https://www.youtube.com/embed/LDEgY6pOG8o",
+        videoTitle: "Gary Rottler Fleet Smart Testimonial",
+        snapshot: [
+          "Client: Rottler Pest Solutions",
+          "Service: Fleet Sell Smart",
+          "Result: $200,000+ recovered over five years",
+          "Volume: 36 fleet vehicles sold",
+          "Average gap recovered: $8,900 per truck"
+        ],
+        situation: "Rottler had a system for replacing vehicles, but the exit strategy was costing them money. In one example, they received $1,500 for a truck, paid an additional $400 fee, and later saw that same truck resold for around $10,000.",
+        action: "iAutoAgent took over the selling process, including vehicle review, inspection coordination, detailing, photos, video, listings, buyer communication, showings, negotiation, paperwork, and final sale coordination.",
+        result: "Over five years, iAutoAgent helped Rottler sell 36 fleet vehicles and recover more than $200,000 in value. The gain did not come from selling more trucks. It came from selling the same trucks better."
+      },
+
+      horizon: {
+        tag: "Fleet Vehicle Finder",
+        title: "Horizon Sign Company got the right truck in about 25 hours.",
+        intro: "David and Megan needed a truck fast, but they did not have time to waste on dealer calls, listings, or negotiation.",
+        video: "https://www.youtube.com/embed/tQrqg4TRsIU",
+        videoTitle: "David Greathouse Fleet Smart Testimonial",
+        snapshot: [
+          "Client: Horizon Sign Company",
+          "Service: Fleet Vehicle Finder",
+          "Vehicle: 2019 Ford F-250",
+          "Mileage: 76,000 miles",
+          "Timeline: 25 hours from first call to keys"
+        ],
+        situation: "Horizon Sign Company needed a truck quickly and could not afford to lose days calling dealers, comparing listings, sitting in finance offices, or guessing whether the deal was fair.",
+        action: "iAutoAgent searched, vetted the vehicle, negotiated the deal, reviewed warranty options, and coordinated the back-end details so the client could make one clear decision.",
+        result: "The business ended up with a 2019 Ford F-250 with 76,000 miles and a clean buying process that took roughly 25 hours from first call to keys in hand."
+      },
+
+      coolaire: {
+        tag: "Nationwide Search",
+        title: "Coolaire HVAC found a rare 860-mile van 1,200 miles away.",
+        intro: "A flooded fleet van created an urgent replacement need. Local inventory did not have the right vehicle.",
+        video: "",
+        videoTitle: "",
+        snapshot: [
+          "Client: HVAC company",
+          "Service: Fleet Platinum Vehicle Finder",
+          "Vehicle: 2018 Chevy Express",
+          "Mileage: 860 miles",
+          "Distance: Sourced from New York and delivered to Missouri"
+        ],
+        situation: "A key van went down after flooding. The owner needed a very specific used Chevy Express with unusually low miles, but local inventory had nothing that fit.",
+        action: "iAutoAgent searched nationwide, found a rare 2018 Chevy Express with only 860 miles in New York, verified the fit, coordinated paperwork, and arranged transportation.",
+        result: "The van was delivered directly to the owner's driveway in Missouri. The owner did not leave town, did not deal with the dealer, and did not have to gamble on the vehicle alone."
+      },
+
+      loveland: {
+        tag: "Vehicle Protection Plan",
+        title: "Loveland Home Solutions reduced major repair-bill exposure.",
+        intro: "Two fleet trucks broke down at the same time. Each had roughly $8,000 in repair exposure.",
+        video: "",
+        videoTitle: "",
+        snapshot: [
+          "Client: Electrical contractor",
+          "Service: Vehicle Protection Plan",
+          "Problem: Two major repair events at once",
+          "Exposure: About $16,000",
+          "Plan: Protect what qualifies and replace what does not"
+        ],
+        situation: "Two older trucks with high mileage broke down at the same time. The owner needed to know whether it made sense to keep putting money into them.",
+        action: "iAutoAgent reviewed the fleet, identified which vehicles made sense to protect, explained which vehicles were too far gone, and helped secure protection plans for the qualifying vehicles.",
+        result: "The company reduced the risk of future surprise repair bills and gained a clearer strategy for protection, replacement timing, and cash-flow control."
+      },
+
+      davidtrue: {
+        tag: "Finder + Protection",
+        title: "David True found a work-ready truck and protected his cash flow.",
+        intro: "David needed a specific setup for his handyman business, not just any pickup.",
+        video: "",
+        videoTitle: "",
+        externalLinks: [
+          {
+            label: "Watch David’s buying testimonial",
+            url: "https://photos.app.goo.gl/3d34C3zge7fpKD6N9"
+          },
+          {
+            label: "Watch David’s protection-plan testimonial",
+            url: "https://photos.app.goo.gl/S2zHyaTRDVtpQBRz8"
+          }
+        ],
+        snapshot: [
+          "Client: David True",
+          "Service: Vehicle Finder + Protection Plan",
+          "Extras: Topper, rack, and Decked cargo system",
+          "Added value: About $5,000 in extras",
+          "Repair covered: About $10,000 transmission repair"
+        ],
+        situation: "David was starting a handyman business and needed a pickup that could work from day one. He needed organized storage, a topper, and a setup that matched real job-site needs.",
+        action: "iAutoAgent searched until the right truck appeared, helped secure a pickup with the needed topper, rack, and Decked cargo system, then helped him add a vehicle protection plan.",
+        result: "David got about $5,000 in useful work-truck extras already included and later avoided a major out-of-pocket hit when his protection plan covered a transmission repair."
+      },
+
+      kci: {
+        tag: "Fleet Selling Support",
+        title: "KCI Construction got vehicle selling off the fleet manager’s plate.",
+        intro: "The fleet manager was trying to sell company vehicles himself while also managing his actual job.",
+        video: "",
+        videoTitle: "",
+        snapshot: [
+          "Client: KCI Construction",
+          "Service: Fleet Sell Smart",
+          "Problem: Selling vehicles manually",
+          "Pain point: Marketplace chaos and buyer management",
+          "Outcome: 20–30% higher sale prices compared to typical alternatives"
+        ],
+        situation: "KCI had vehicles to sell, but the process was eating into the fleet manager’s time. Facebook Marketplace and similar selling channels created messages, no-shows, questions, and scheduling problems.",
+        action: "iAutoAgent took over the vehicle-selling process, including buyer communication, showing coordination, negotiation support, paperwork steps, and start-to-finish sale coordination.",
+        result: "The fleet manager got time back, the business avoided marketplace chaos, and KCI achieved stronger selling outcomes than typical trade-in, auction, or do-it-yourself options."
+      }
+    };
+
+    const modal = document.getElementById("caseModal");
+    const modalTag = document.getElementById("modalTag");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalIntro = document.getElementById("modalIntro");
+    const modalVideo = document.getElementById("modalVideo");
+    const modalSnapshot = document.getElementById("modalSnapshot");
+    const modalSituation = document.getElementById("modalSituation");
+    const modalAction = document.getElementById("modalAction");
+    const modalResult = document.getElementById("modalResult");
+
+    function openModal(caseKey) {
+      const item = caseStudies[caseKey];
+
+      if (!item) {
+        return;
+      }
+
+      modalTag.textContent = item.tag;
+      modalTitle.innerHTML = item.title.replace("$200,000+", "<span>$200,000+</span>");
+      modalIntro.textContent = item.intro;
+      modalSituation.textContent = item.situation;
+      modalAction.textContent = item.action;
+      modalResult.textContent = item.result;
+
+      modalSnapshot.innerHTML = item.snapshot.map(function(point) {
+        return "<li>" + point + "</li>";
+      }).join("");
+
+      if (item.video) {
+        modalVideo.innerHTML =
+          '<div class="video-frame">' +
+            '<iframe src="' + item.video + '" title="' + item.videoTitle + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' +
+          '</div>';
+      } else if (item.externalLinks && item.externalLinks.length) {
+        modalVideo.innerHTML =
+          '<div class="video-placeholder">' +
+            '<div>' +
+              '<strong>Client video links</strong>' +
+              '<span>Open David True testimonial videos below.</span>' +
+              '<div class="modal-actions" style="justify-content:center;">' +
+                item.externalLinks.map(function(link) {
+                  return '<a class="btn btn-secondary" href="' + link.url + '" target="_blank" rel="noopener">' + link.label + '</a>';
+                }).join("") +
+              '</div>' +
+            '</div>' +
+          '</div>';
+      } else {
+        modalVideo.innerHTML =
+          '<div class="video-placeholder">' +
+            '<div>' +
+              '<strong>Video coming soon</strong>' +
+              '<span>This case study currently uses written proof points.</span>' +
+            '</div>' +
+          '</div>';
+      }
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      modalVideo.innerHTML = "";
+    }
+
+    document.querySelectorAll(".case-row").forEach(function(button) {
+      button.addEventListener("click", function() {
+        openModal(button.dataset.case);
+      });
+    });
+
+    document.querySelectorAll("[data-close-modal]").forEach(function(closeButton) {
+      closeButton.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
-  <!-- deployment refresh 2-->
 </html>
