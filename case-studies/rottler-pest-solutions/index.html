@@ -28,6 +28,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -300,6 +304,41 @@
       margin: 0;
     }
 
+    .video-section {
+      margin: 38px 0;
+    }
+
+    .video-section h3 {
+      color: var(--purple);
+      margin: 0 0 12px;
+    }
+
+    .video-intro {
+      color: #34313a;
+      font-size: 18px;
+      margin: 0 0 18px;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     .cta {
       background:
         radial-gradient(circle at top right, rgba(127, 191, 63, 0.25), transparent 32%),
@@ -332,6 +371,12 @@
 
     footer strong {
       color: var(--white);
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     @media (max-width: 900px) {
@@ -381,7 +426,7 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="../index.html">
+      <a class="brand" href="../../index.html">
         <strong>Fleet Smart</strong>
         <span>by iAutoAgent</span>
       </a>
@@ -479,6 +524,23 @@
               The gain did not come from selling more trucks. It came from selling the same trucks better.
             </p>
 
+            <div class="video-section">
+              <h3>Watch Gary Rottler’s Fleet Smart testimonial</h3>
+
+              <p class="video-intro">
+                Gary Rottler explains the fleet selling problem from the business owner’s side and why the resale process matters.
+              </p>
+
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube.com/embed/LDEgY6pOG8o"
+                  title="Gary Rottler Fleet Smart Testimonial"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
             <p>
               For a service business, that difference matters. Aging trucks are not just old assets. They are trapped
               capital. Fleet Smart helps turn that trapped capital back into working money.
@@ -513,7 +575,7 @@
 
   <footer>
     <strong>Fleet Smart by iAutoAgent</strong><br />
-    <a href="../index.html">Back to Fleet Smart homepage</a>
+    <a href="../../index.html">Back to Fleet Smart homepage</a>
   </footer>
 </body>
 </html>
