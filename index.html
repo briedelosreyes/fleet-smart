@@ -382,43 +382,64 @@
 
     .lifecycle {
       background: var(--light);
+      padding: 58px 20px;
     }
 
-    .lifecycle-timeline {
+    .lifecycle .section-heading {
+      margin-bottom: 26px;
+    }
+
+    .horizontal-timeline-wrap {
       position: relative;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 10px 0;
+      overflow-x: auto;
+      padding: 18px 4px 10px;
+      scrollbar-width: thin;
     }
 
-    .lifecycle-timeline::before {
+    .horizontal-timeline {
+      position: relative;
+      min-width: 1060px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      padding-top: 46px;
+    }
+
+    .horizontal-timeline::before {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 4px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, var(--purple), var(--green));
+      top: 25px;
+      left: 7.5%;
+      right: 7.5%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--green));
       border-radius: 999px;
     }
 
-    .timeline-item {
+    .timeline-step {
       position: relative;
-      display: grid;
-      grid-template-columns: 1fr 90px 1fr;
-      align-items: center;
-      margin: 0 0 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 18px 20px;
+      min-height: 205px;
+      box-shadow: 0 10px 24px rgba(33, 18, 55, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
-    .timeline-item:last-child {
-      margin-bottom: 0;
+    .timeline-step:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(97, 45, 145, 0.28);
     }
 
-    .timeline-dot {
-      grid-column: 2;
-      width: 58px;
-      height: 58px;
+    .timeline-node {
+      position: absolute;
+      top: -47px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: var(--white);
       border: 4px solid var(--purple);
@@ -426,63 +447,14 @@
       display: grid;
       place-items: center;
       font-weight: 900;
-      font-size: 20px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
+      font-size: 19px;
       box-shadow: 0 12px 26px rgba(33, 18, 55, 0.16);
+      z-index: 2;
     }
 
-    .timeline-content {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 12px 28px rgba(33, 18, 55, 0.08);
-      position: relative;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-    }
-
-    .timeline-content:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-      border-color: rgba(97, 45, 145, 0.28);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      grid-column: 1;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      grid-column: 3;
-      text-align: left;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content::after {
-      content: "";
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      width: 18px;
-      height: 18px;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .timeline-item:nth-child(even) .timeline-content::after {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 50%;
-      width: 18px;
-      height: 18px;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-      transform: translateY(-50%) rotate(45deg);
+    .timeline-step:last-child .timeline-node {
+      border-color: var(--green);
+      color: var(--green-dark);
     }
 
     .timeline-kicker {
@@ -492,49 +464,50 @@
       color: var(--green-dark);
       border: 1px solid rgba(127, 191, 63, 0.25);
       border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
+      padding: 6px 10px;
+      font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .timeline-content h3 {
+    .timeline-step h3 {
       margin: 0 0 8px;
       color: var(--purple);
-      font-size: 23px;
+      font-size: 19px;
       line-height: 1.15;
     }
 
-    .timeline-content p {
+    .timeline-step p {
       margin: 0;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 1.45;
     }
 
-    .timeline-start-end {
-      max-width: 760px;
-      margin: 36px auto 0;
+    .timeline-note {
+      max-width: 860px;
+      margin: 26px auto 0;
       text-align: center;
       background: linear-gradient(135deg, var(--purple), var(--purple-dark));
       color: var(--white);
-      border-radius: 24px;
-      padding: 28px;
+      border-radius: 22px;
+      padding: 22px 26px;
       box-shadow: var(--shadow);
     }
 
-    .timeline-start-end h3 {
-      margin: 0 0 8px;
+    .timeline-note h3 {
+      margin: 0 0 6px;
       color: var(--white);
-      font-size: 26px;
+      font-size: 24px;
       line-height: 1.15;
     }
 
-    .timeline-start-end p {
+    .timeline-note p {
       margin: 0;
       color: rgba(255, 255, 255, 0.9);
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .services {
@@ -1047,37 +1020,17 @@
         align-items: flex-start;
       }
 
-      .lifecycle-timeline::before {
-        left: 29px;
+      .horizontal-timeline-wrap {
+        margin-left: -4px;
+        margin-right: -4px;
       }
 
-      .timeline-item {
-        grid-template-columns: 58px 1fr;
-        gap: 16px;
-        align-items: start;
+      .horizontal-timeline {
+        min-width: 980px;
       }
 
-      .timeline-dot {
-        grid-column: 1;
-        width: 58px;
-        height: 58px;
-      }
-
-      .timeline-item:nth-child(odd) .timeline-content,
-      .timeline-item:nth-child(even) .timeline-content {
-        grid-column: 2;
-        text-align: left;
-      }
-
-      .timeline-item:nth-child(odd) .timeline-content::after,
-      .timeline-item:nth-child(even) .timeline-content::after {
-        left: -10px;
-        right: auto;
-        top: 29px;
-        border: 0;
-        border-bottom: 1px solid var(--border);
-        border-left: 1px solid var(--border);
-        transform: rotate(45deg);
+      .timeline-step {
+        min-height: 190px;
       }
     }
 
@@ -1120,6 +1073,10 @@
         padding: 54px 18px;
       }
 
+      .lifecycle {
+        padding: 46px 18px;
+      }
+
       .hero-card,
       .case-copy {
         padding: 24px;
@@ -1131,6 +1088,28 @@
 
       .case-video-preview {
         min-height: 220px;
+      }
+
+      .horizontal-timeline {
+        min-width: 900px;
+      }
+
+      .timeline-step {
+        min-height: 180px;
+        padding: 20px 16px 18px;
+      }
+
+      .timeline-step h3 {
+        font-size: 18px;
+      }
+
+      .timeline-step p {
+        font-size: 13px;
+      }
+
+      .timeline-note {
+        text-align: left;
+        padding: 22px;
       }
 
       .modal {
@@ -1147,30 +1126,6 @@
 
       .modal-close {
         margin-right: 10px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 48px 1fr;
-        gap: 14px;
-      }
-
-      .timeline-dot {
-        width: 48px;
-        height: 48px;
-        font-size: 17px;
-        border-width: 3px;
-      }
-
-      .lifecycle-timeline::before {
-        left: 24px;
-      }
-
-      .timeline-content {
-        padding: 20px;
-      }
-
-      .timeline-content h3 {
-        font-size: 21px;
       }
     }
   </style>
@@ -1302,80 +1257,69 @@
         <div class="section-heading center">
           <h2>The Fleet Smart vehicle lifecycle</h2>
           <p>
-            We handle the full gamut, from the first conversation to buying, upfitting, protection, replacement planning,
-            and resale.
+            One continuous fleet strategy from first review to final resale.
           </p>
         </div>
 
-        <div class="lifecycle-timeline">
-          <div class="timeline-item">
-            <div class="timeline-content">
+        <div class="horizontal-timeline-wrap">
+          <div class="horizontal-timeline">
+            <article class="timeline-step">
+              <div class="timeline-node">0</div>
               <div class="timeline-kicker">Step 0</div>
-              <h3>Initial fleet review</h3>
+              <h3>Initial review</h3>
               <p>
-                We learn what vehicles you have, what you need, what is costing time, and where money may be leaking.
+                We learn what vehicles you have, what you need, and where money or time may be leaking.
               </p>
-            </div>
-            <div class="timeline-dot">0</div>
-          </div>
+            </article>
 
-          <div class="timeline-item">
-            <div class="timeline-dot">1</div>
-            <div class="timeline-content">
+            <article class="timeline-step">
+              <div class="timeline-node">1</div>
               <div class="timeline-kicker">Step 1</div>
               <h3>Fleet strategy</h3>
               <p>
-                We help build a plan for what to buy, what to sell, what to protect, what to replace, and what to hold.
+                We map what to buy, sell, protect, replace, or hold.
               </p>
-            </div>
-          </div>
+            </article>
 
-          <div class="timeline-item">
-            <div class="timeline-content">
+            <article class="timeline-step">
+              <div class="timeline-node">2</div>
               <div class="timeline-kicker">Step 2</div>
-              <h3>Vehicle acquisition</h3>
+              <h3>Acquisition</h3>
               <p>
-                We help find, vet, negotiate, and coordinate the right trucks or vans so you avoid rushed buying mistakes.
+                We help find, vet, negotiate, and coordinate the right truck or van.
               </p>
-            </div>
-            <div class="timeline-dot">2</div>
-          </div>
+            </article>
 
-          <div class="timeline-item">
-            <div class="timeline-dot">3</div>
-            <div class="timeline-content">
+            <article class="timeline-step">
+              <div class="timeline-node">3</div>
               <div class="timeline-kicker">Step 3</div>
-              <h3>Upfitting coordination</h3>
+              <h3>Upfitting</h3>
               <p>
-                We help streamline wraps, shelving, GPS, telematics, and other setup needs that make the vehicle work-ready.
+                We help coordinate wraps, shelving, GPS, telematics, and setup needs.
               </p>
-            </div>
-          </div>
+            </article>
 
-          <div class="timeline-item">
-            <div class="timeline-content">
+            <article class="timeline-step">
+              <div class="timeline-node">4</div>
               <div class="timeline-kicker">Step 4</div>
-              <h3>Vehicle protection</h3>
+              <h3>Protection</h3>
               <p>
-                We review which vehicles make sense to protect and which ones should not be covered because replacement is smarter.
+                We review which vehicles make sense to protect and which ones do not.
               </p>
-            </div>
-            <div class="timeline-dot">4</div>
-          </div>
+            </article>
 
-          <div class="timeline-item">
-            <div class="timeline-dot">5</div>
-            <div class="timeline-content">
+            <article class="timeline-step">
+              <div class="timeline-node">5</div>
               <div class="timeline-kicker">Step 5</div>
-              <h3>Fleet resale</h3>
+              <h3>Resale</h3>
               <p>
-                When it is time to sell, we handle the selling process so your team does not have to act like used-car salespeople.
+                When it is time to sell, we handle the process so your team does not have to.
               </p>
-            </div>
+            </article>
           </div>
         </div>
 
-        <div class="timeline-start-end">
+        <div class="timeline-note">
           <h3>From acquisition to resale, we keep the fleet process moving.</h3>
           <p>
             You stay focused on running the business. Fleet Smart helps manage the vehicle decisions that affect time,
