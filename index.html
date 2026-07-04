@@ -6,7 +6,7 @@
 
   <title>Fleet Smart by iAutoAgent | Fleet Buying, Selling & Protection</title>
 
-  <meta name="description" content="Fleet Smart by iAutoAgent helps service businesses buy, sell, protect, and coordinate fleet vehicles without dealership games, wasted time, or leaving money on the table." />
+  <meta name="description" content="Fleet Smart by iAutoAgent helps service businesses buy, sell, protect, upfit, and coordinate fleet vehicles without dealership games, wasted time, or leaving money on the table." />
 
   <style>
     :root {
@@ -325,7 +325,7 @@
 
     .problem-card,
     .service-card,
-    .process-card,
+    .timeline-card,
     .testimonial-card,
     .faq-card {
       background: var(--white);
@@ -337,7 +337,7 @@
 
     .problem-card h3,
     .service-card h3,
-    .process-card h3,
+    .timeline-card h3,
     .testimonial-card h3,
     .faq-card h3 {
       margin: 0 0 10px;
@@ -348,15 +348,87 @@
 
     .problem-card p,
     .service-card p,
-    .process-card p,
+    .timeline-card p,
     .testimonial-card p,
     .faq-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .services {
+    .inline-cta {
+      margin-top: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(127, 191, 63, 0.18), transparent 30%),
+        linear-gradient(135deg, #ffffff, #f7f4fb);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      box-shadow: 0 12px 28px rgba(33, 18, 55, 0.08);
+    }
+
+    .inline-cta h3 {
+      margin: 0 0 6px;
+      color: var(--purple);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .inline-cta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .lifecycle {
       background: var(--light);
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      counter-reset: timeline;
+    }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      counter-increment: timeline;
+      content: counter(timeline);
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      color: rgba(97, 45, 145, 0.08);
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .timeline-card .step-label {
+      display: inline-flex;
+      width: fit-content;
+      background: rgba(127, 191, 63, 0.14);
+      color: var(--green-dark);
+      border: 1px solid rgba(127, 191, 63, 0.25);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .services {
+      background: var(--white);
     }
 
     .service-grid {
@@ -379,7 +451,7 @@
     }
 
     .proof {
-      background: var(--white);
+      background: var(--light);
     }
 
     .proof-strip {
@@ -542,25 +614,6 @@
       display: block;
       font-size: 14px;
       opacity: 0.88;
-    }
-
-    .process {
-      background: var(--light);
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-
-    .process-card .step {
-      color: var(--green-dark);
-      font-weight: 900;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
     }
 
     .testimonials {
@@ -856,7 +909,7 @@
 
       .service-grid,
       .proof-strip,
-      .process-grid {
+      .timeline-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -878,6 +931,11 @@
 
       .modal-snapshot {
         position: static;
+      }
+
+      .inline-cta {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
@@ -911,7 +969,7 @@
       .problem-grid,
       .service-grid,
       .proof-strip,
-      .process-grid,
+      .timeline-grid,
       .testimonial-grid,
       .faq-grid {
         grid-template-columns: 1fr;
@@ -955,7 +1013,7 @@
 
 <body>
   <div class="topbar">
-    Fleet buying, selling, protection, and coordination for service businesses.
+    Fleet buying, selling, protection, upfitting, and coordination for service businesses.
   </div>
 
   <header class="nav">
@@ -966,9 +1024,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
+        <a href="#lifecycle">Lifecycle</a>
         <a href="#services">Services</a>
         <a href="#proof">Case Studies</a>
-        <a href="#process">Process</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -985,13 +1043,13 @@
           <h1>Your fleet is either making you money or <span>quietly costing you money.</span></h1>
 
           <p class="hero-lede">
-            Fleet Smart helps service businesses buy the right vehicles, sell aging fleet units for stronger returns,
-            protect against major repair shocks, and keep the whole process off your plate.
+            Fleet Smart helps service businesses buy, upfit, protect, manage, and sell fleet vehicles with less downtime,
+            less guesswork, and less money left on the table.
           </p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:6366143711">Call or Text 636-614-3711</a>
-            <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>
+            <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Free Fleet Smart Review</a>
           </div>
 
           <p class="trust-line">
@@ -1000,16 +1058,16 @@
         </div>
 
         <aside class="hero-card">
-          <h2>Hands-off fleet help for busy operators.</h2>
+          <h2>End-to-end fleet vehicle support.</h2>
           <p>
-            You keep your team focused on the business. We handle the vehicle research, selling strategy,
-            buyer screening, negotiation, paperwork coordination, and protection-plan review.
+            We help you think through the full vehicle lifecycle: what to buy, when to protect it, how to upfit it,
+            when to replace it, and how to sell it for stronger returns.
           </p>
 
           <div class="mini-stat">
             <div>
               <strong>$200K+</strong>
-              <span>Recovered for one fleet client over five years.</span>
+              <span>Recovered for one fleet client with zero out of pocket.</span>
             </div>
             <div>
               <strong>36</strong>
@@ -1051,16 +1109,95 @@
             <h3>Buying under pressure</h3>
             <p>
               When a vehicle goes down, owners rush. Rushed buying creates bad pricing, poor fit, weak warranty choices,
-              and downtime.
+              and costly downtime.
             </p>
           </article>
 
           <article class="problem-card">
-            <h3>Repair bills with no plan</h3>
+            <h3>Managing without a plan</h3>
             <p>
-              One major transmission, engine, or electrical failure can hit cash flow hard. Two at once can wreck a month.
+              Vehicle buying, upfitting, protection, repair decisions, replacement timing, and resale are all connected.
+              Treating them separately creates waste.
             </p>
           </article>
+        </div>
+
+        <div class="inline-cta">
+          <div>
+            <h3>Not sure where your fleet is leaking money?</h3>
+            <p>Start with a free Fleet Smart Review. We will look at the big gaps first.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:info@iautoagent.com?subject=Free%20Fleet%20Smart%20Review">Request a Free Fleet Smart Review</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="lifecycle" id="lifecycle">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2>The Fleet Smart vehicle lifecycle</h2>
+          <p>
+            We handle the full gamut, from the first conversation to buying, upfitting, protection, replacement planning,
+            and resale.
+          </p>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-card">
+            <div class="step-label">Step 0</div>
+            <h3>Initial fleet review</h3>
+            <p>
+              We learn what vehicles you have, what you need, what is costing time, and where money may be leaking.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="step-label">Step 1</div>
+            <h3>Fleet strategy</h3>
+            <p>
+              We help build a plan for what to buy, what to sell, what to protect, what to replace, and what to hold.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="step-label">Step 2</div>
+            <h3>Vehicle acquisition</h3>
+            <p>
+              We help find, vet, negotiate, and coordinate the right trucks or vans so you avoid rushed buying mistakes.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="step-label">Step 3</div>
+            <h3>Upfitting coordination</h3>
+            <p>
+              We help streamline wraps, shelving, GPS, telematics, and other setup needs that make the vehicle work-ready.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="step-label">Step 4</div>
+            <h3>Vehicle protection</h3>
+            <p>
+              We review which vehicles make sense to protect and which ones should not be covered because replacement is smarter.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="step-label">Step 5</div>
+            <h3>Fleet resale</h3>
+            <p>
+              When it is time to sell, we handle the selling process so your team does not have to act like used-car salespeople.
+            </p>
+          </article>
+        </div>
+
+        <div class="inline-cta">
+          <div>
+            <h3>Fleet vehicles should have a strategy, not just a disposal plan.</h3>
+            <p>We help you think through the full lifecycle before the next truck becomes an emergency.</p>
+          </div>
+          <a class="btn btn-secondary" href="tel:6366143711">Call or Text 636-614-3711</a>
         </div>
       </div>
     </section>
@@ -1070,7 +1207,8 @@
         <div class="section-heading">
           <h2>What Fleet Smart handles</h2>
           <p>
-            Choose the support you need now, then build a smarter fleet process over time.
+            Each service is built around the result business owners care about: less wasted time, less downtime, stronger resale,
+            and fewer expensive vehicle mistakes.
           </p>
         </div>
 
@@ -1079,8 +1217,8 @@
             <div class="service-number">1</div>
             <h3>Fleet Sell Smart</h3>
             <p>
-              We help you sell aging trucks and vans for stronger returns while handling presentation, buyers,
-              communication, negotiation, and transaction coordination.
+              Sell aging trucks and vans for an average of 20–30% more compared to typical alternatives, without your team
+              managing buyers, no-shows, negotiation, or paperwork.
             </p>
           </article>
 
@@ -1088,27 +1226,36 @@
             <div class="service-number">2</div>
             <h3>Fleet Vehicle Finder</h3>
             <p>
-              We find, vet, negotiate, and coordinate the purchase of business vehicles so you do not waste days chasing
-              listings or sitting in dealerships.
+              Avoid rushed purchases, dealer games, bad-fit vehicles, and downtime by letting us find, vet, negotiate,
+              and coordinate the right vehicle.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-number">3</div>
-            <h3>Vehicle Protection Plans</h3>
+            <h3>Upfitting Coordination</h3>
             <p>
-              We review which vehicles are worth protecting, which ones are not, and how to reduce surprise repair exposure.
+              Get the vehicle work-ready faster by coordinating wraps, shelving, GPS, telematics, and setup details that
+              usually slow businesses down.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-number">4</div>
-            <h3>Fleet Coordination</h3>
+            <h3>Vehicle Protection Plans</h3>
             <p>
-              We help owners and fleet managers make better timing decisions around replacement, resale, protection,
-              and vehicle selection.
+              Reduce surprise repair exposure by reviewing which vehicles are worth protecting and which ones are better
+              candidates for replacement.
             </p>
           </article>
+        </div>
+
+        <div class="inline-cta">
+          <div>
+            <h3>Need help with one vehicle or the whole fleet?</h3>
+            <p>Fleet Smart can start with one truck, one van, one sale, or a full lifecycle strategy.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Services">Talk Through My Fleet</a>
         </div>
       </div>
     </section>
@@ -1125,7 +1272,7 @@
         <div class="proof-strip">
           <div class="proof-box">
             <strong>$200K+</strong>
-            <span>Total recovered for Rottler Pest Solutions over five years.</span>
+            <span>Total recovered for Rottler Pest Solutions with zero out of pocket.</span>
           </div>
 
           <div class="proof-box">
@@ -1134,8 +1281,8 @@
           </div>
 
           <div class="proof-box">
-            <strong>$5,732</strong>
-            <span>Horizon Sign Company was better off versus doing it alone.</span>
+            <strong>25 hrs</strong>
+            <span>Horizon Sign Company went from first call to keys in hand.</span>
           </div>
 
           <div class="proof-box">
@@ -1153,7 +1300,7 @@
                 Rottler had trucks being bought back low and resold much higher. iAutoAgent took over the selling process
                 and helped recover serious value across the fleet.
               </p>
-              <div class="case-metric">$200,000+ recovered over 5 years</div>
+              <div class="case-metric">$200,000+ recovered with zero out of pocket</div>
             </div>
 
             <div class="case-video-preview" style="background-image: url('https://img.youtube.com/vi/LDEgY6pOG8o/maxresdefault.jpg');">
@@ -1213,7 +1360,7 @@
                 Two trucks had major repair issues at the same time. We helped identify which vehicles made sense to protect
                 and which needed a different replacement plan.
               </p>
-              <div class="case-metric">$16,000 in immediate repair exposure</div>
+              <div class="case-metric">$16,000 in immediate repair exposure addressed</div>
             </div>
 
             <div class="case-video-preview no-thumb">
@@ -1265,48 +1412,13 @@
             </div>
           </button>
         </div>
-      </div>
-    </section>
 
-    <section class="process" id="process">
-      <div class="section-inner">
-        <div class="section-heading center">
-          <h2>The Fleet Smart process</h2>
-          <p>
-            Simple on your side. Detailed on ours.
-          </p>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-card">
-            <div class="step">Step 1</div>
-            <h3>Review</h3>
-            <p>We look at your current fleet situation, vehicle needs, and pressure points.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step">Step 2</div>
-            <h3>Strategy</h3>
-            <p>We identify what to buy, sell, protect, replace, or hold.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step">Step 3</div>
-            <h3>Execution</h3>
-            <p>We handle the search, sale, screening, negotiation, and coordination.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step">Step 4</div>
-            <h3>Protection</h3>
-            <p>We review repair-risk options and protection-plan fit.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step">Step 5</div>
-            <h3>Repeat</h3>
-            <p>We help turn vehicle decisions into a cleaner fleet system.</p>
-          </article>
+        <div class="inline-cta">
+          <div>
+            <h3>Your fleet may already have money sitting in it.</h3>
+            <p>Before you trade in, auction, or hand back another truck, get a second look.</p>
+          </div>
+          <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Case%20Study%20Review">Review My Fleet</a>
         </div>
       </div>
     </section>
@@ -1378,7 +1490,7 @@
           <article class="faq-card">
             <h3>Do you only help with selling?</h3>
             <p>
-              No. Fleet Smart covers buying, selling, protection-plan review, and fleet vehicle coordination.
+              No. Fleet Smart covers buying, selling, upfitting coordination, protection-plan review, and fleet vehicle strategy.
             </p>
           </article>
         </div>
@@ -1390,12 +1502,12 @@
         <h2>Stop guessing on fleet vehicles.</h2>
         <p>
           If your trucks and vans affect revenue, cash flow, staffing, or service capacity, you need a cleaner system.
-          Start with a Fleet Smart review.
+          Start with a free Fleet Smart Review.
         </p>
 
         <div class="hero-actions" style="justify-content: center;">
           <a class="btn btn-secondary" href="tel:6366143711">Call or Text 636-614-3711</a>
-          <a class="btn btn-outline" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>
+          <a class="btn btn-outline" href="mailto:info@iautoagent.com?subject=Free%20Fleet%20Smart%20Review">Request a Free Fleet Smart Review</a>
         </div>
       </div>
     </section>
@@ -1432,7 +1544,7 @@
 
   <footer>
     <strong>Fleet Smart by iAutoAgent</strong><br />
-    Fleet buying, selling, protection, and coordination for service businesses.
+    Fleet buying, selling, protection, upfitting, and coordination for service businesses.
   </footer>
 
   <script>
@@ -1440,13 +1552,13 @@
       rottler: {
         tag: "Fleet Sell Smart",
         title: "Rottler Pest Solutions recovered $200,000+ from aging fleet vehicles.",
-        intro: "Rottler had been selling trucks back low while someone else captured the resale value. Fleet Smart helped turn those aging trucks into stronger returns.",
+        intro: "Rottler had been selling trucks back low while someone else captured the resale value. Fleet Smart helped turn those aging trucks into stronger returns with zero out of pocket.",
         video: "https://www.youtube.com/embed/LDEgY6pOG8o",
         videoTitle: "Gary Rottler Fleet Smart Testimonial",
         snapshot: [
           "Client: Rottler Pest Solutions",
           "Service: Fleet Sell Smart",
-          "Result: $200,000+ recovered over five years",
+          "Result: $200,000+ recovered with zero out of pocket",
           "Volume: 36 fleet vehicles sold from 2021 to 2026",
           "Average gap recovered: $8,900 per truck",
           "Core problem: Low buyback and wholesale-style exit options"
@@ -1462,7 +1574,7 @@
           },
           {
             type: "callout",
-            strong: "$8,900 average gap recovered per truck",
+            strong: "$200,000+ recovered with zero out of pocket",
             body: "The issue was not that the trucks had no value. The issue was that someone else was controlling the resale process and capturing the upside."
           },
           {
@@ -1495,20 +1607,34 @@
           "Service: Fleet Vehicle Finder",
           "Vehicle: 2019 Ford F-250",
           "Mileage: 76,000 miles",
-          "Timeline: 25 hours from first call to keys"
+          "Timeline: 25 hours from first call to keys",
+          "Business result: Less downtime and fewer wasted hours"
         ],
         sections: [
           {
-            heading: "The situation",
-            body: "Horizon Sign Company needed a truck quickly and could not afford to lose days calling dealers, comparing listings, sitting in finance offices, or guessing whether the deal was fair."
+            heading: "The urgent need",
+            body: "Horizon Sign Company needed a truck quickly. The business did not have days to spend calling dealers, comparing listings, sitting in finance offices, and hoping the deal was fair."
           },
           {
-            heading: "What iAutoAgent did",
+            heading: "The real business risk",
+            body: "For a service business, vehicle buying is not just about price. Every hour spent chasing a truck is time not spent serving customers, producing work, and moving jobs forward."
+          },
+          {
+            type: "callout",
+            strong: "25 hours from first call to keys in hand",
+            body: "The goal was not just to find a truck. The goal was to get the right truck without dragging the business through a slow, distracting buying process."
+          },
+          {
+            heading: "What iAutoAgent handled",
             body: "iAutoAgent searched, vetted the vehicle, negotiated the deal, reviewed warranty options, and coordinated the back-end details so the client could make one clear decision."
           },
           {
             heading: "The result",
-            body: "The business ended up with a 2019 Ford F-250 with 76,000 miles and a clean buying process that took roughly 25 hours from first call to keys in hand."
+            body: "Horizon ended up with a 2019 Ford F-250 with 76,000 miles and a clean buying process that took about 25 hours from first conversation to keys in hand."
+          },
+          {
+            heading: "Why it matters",
+            body: "Buying the wrong vehicle at the wrong price hurts cash flow, delays jobs, and creates repair headaches that follow the business for years. Fleet Vehicle Finder reduces that risk."
           }
         ]
       },
@@ -1523,20 +1649,34 @@
           "Service: Fleet Platinum Vehicle Finder",
           "Vehicle: 2018 Chevy Express",
           "Mileage: 860 miles",
-          "Distance: Sourced from New York and delivered to Missouri"
+          "Distance: Sourced from New York and delivered to Missouri",
+          "Business result: Replacement vehicle found without the owner leaving town"
         ],
         sections: [
           {
-            heading: "The situation",
-            body: "A key van went down after flooding. The owner needed a very specific used Chevy Express with unusually low miles, but local inventory had nothing that fit."
+            heading: "The emergency",
+            body: "A key van went down after flooding. For an HVAC company, a van off the road can mean missed service calls, frustrated customers, and revenue walking out the door."
           },
           {
-            heading: "What iAutoAgent did",
-            body: "iAutoAgent searched nationwide, found a rare 2018 Chevy Express with only 860 miles in New York, verified the fit, coordinated paperwork, and arranged transportation."
+            heading: "The hard requirement",
+            body: "The owner needed a very specific used Chevy Express with unusually low miles. Local inventory had nothing that fit, and settling for the wrong vehicle would have created a new problem."
+          },
+          {
+            type: "callout",
+            strong: "860 miles on a 2018 Chevy Express",
+            body: "This was a rare find. The right vehicle was not local. It was about 1,200 miles away in New York."
+          },
+          {
+            heading: "What iAutoAgent handled",
+            body: "iAutoAgent searched nationwide, found the van, verified that it matched the need, coordinated paperwork, and arranged transportation from New York to Missouri."
           },
           {
             heading: "The result",
-            body: "The van was delivered directly to the owner's driveway in Missouri. The owner did not leave town, did not deal with the dealer, and did not have to gamble on the vehicle alone."
+            body: "The van was delivered directly to the owner's driveway. The owner did not have to leave town, speak to the dealer, travel for inspection, or guess whether the vehicle was worth the risk."
+          },
+          {
+            heading: "Why it matters",
+            body: "Local inventory is not always the answer. When a business needs a specific truck or van, the right vehicle may be in another state. Fleet Smart helps find it, verify it, and get it delivered."
           }
         ]
       },
@@ -1551,20 +1691,34 @@
           "Service: Vehicle Protection Plan",
           "Problem: Two major repair events at once",
           "Exposure: About $16,000",
-          "Plan: Protect what qualifies and replace what does not"
+          "Plan: Protect what qualifies and replace what does not",
+          "Business result: More predictable repair-risk planning"
         ],
         sections: [
           {
-            heading: "The situation",
-            body: "Two older trucks with high mileage broke down at the same time. The owner needed to know whether it made sense to keep putting money into them."
+            heading: "The repair shock",
+            body: "Two older trucks with high mileage broke down at the same time. Each one carried roughly $8,000 in repair exposure. That kind of hit can create a serious cash-flow problem."
           },
           {
-            heading: "What iAutoAgent did",
-            body: "iAutoAgent reviewed the fleet, identified which vehicles made sense to protect, explained which vehicles were too far gone, and helped secure protection plans for the qualifying vehicles."
+            heading: "The real question",
+            body: "The owner needed to know whether it made sense to keep putting money into those vehicles or whether the better answer was protection, replacement, or a combination of both."
+          },
+          {
+            type: "callout",
+            strong: "$16,000 in immediate repair exposure addressed",
+            body: "The point was not to blindly sell a protection plan. The point was to identify which vehicles made sense to protect and which ones were too far gone."
+          },
+          {
+            heading: "What iAutoAgent handled",
+            body: "iAutoAgent reviewed the fleet, identified which vehicles made sense to protect, explained which vehicles were closer to replacement, and helped secure protection plans for the qualifying vehicles."
           },
           {
             heading: "The result",
             body: "The company reduced the risk of future surprise repair bills and gained a clearer strategy for protection, replacement timing, and cash-flow control."
+          },
+          {
+            heading: "Why it matters",
+            body: "A vehicle protection plan is not the right answer for every fleet vehicle. For the right vehicle, it can turn unpredictable repair bills into a more manageable business expense."
           }
         ]
       },
@@ -1587,22 +1741,36 @@
         snapshot: [
           "Client: David True",
           "Service: Vehicle Finder + Protection Plan",
+          "Vehicle need: Work-ready pickup",
           "Extras: Topper, rack, and Decked cargo system",
           "Added value: About $5,000 in extras",
           "Repair covered: About $10,000 transmission repair"
         ],
         sections: [
           {
-            heading: "The situation",
+            heading: "The specific need",
             body: "David was starting a handyman business and needed a pickup that could work from day one. He needed organized storage, a topper, and a setup that matched real job-site needs."
           },
           {
-            heading: "What iAutoAgent did",
-            body: "iAutoAgent searched until the right truck appeared, helped secure a pickup with the needed topper, rack, and Decked cargo system, then helped him add a vehicle protection plan."
+            heading: "The problem with buying too fast",
+            body: "The wrong truck would have forced David to spend more money after the purchase on accessories, storage, and setup. That would have delayed the business and added cost before the truck was even fully useful."
+          },
+          {
+            type: "callout",
+            strong: "$5,000 in useful work-truck extras included",
+            body: "The truck came with the topper, rack, and Decked cargo system already installed. That meant the vehicle was ready to work from day one."
+          },
+          {
+            heading: "What iAutoAgent handled",
+            body: "iAutoAgent searched until the right truck appeared, helped secure the pickup with the needed setup, and helped David add a vehicle protection plan."
           },
           {
             heading: "The result",
-            body: "David got about $5,000 in useful work-truck extras already included and later avoided a major out-of-pocket hit when his protection plan covered a transmission repair."
+            body: "David got a work-ready pickup with about $5,000 in useful extras already included. Later, when the transmission went out, the protection plan covered a repair that could have cost about $10,000 out of pocket."
+          },
+          {
+            heading: "Why it matters",
+            body: "For a small business owner, one wrong vehicle decision can eat cash before the business has momentum. Fleet Smart helps find the right vehicle and protect against the wrong repair surprise."
           }
         ]
       },
@@ -1617,20 +1785,34 @@
           "Service: Fleet Sell Smart",
           "Problem: Selling vehicles manually",
           "Pain point: Marketplace chaos and buyer management",
-          "Outcome: 20–30% higher sale prices compared to typical alternatives"
+          "Outcome: 20–30% higher sale prices compared to typical alternatives",
+          "Business result: Fleet manager got time back"
         ],
         sections: [
           {
-            heading: "The situation",
-            body: "KCI had vehicles to sell, but the process was eating into the fleet manager’s time. Facebook Marketplace and similar selling channels created messages, no-shows, questions, and scheduling problems."
+            heading: "The time drain",
+            body: "KCI had vehicles to sell, but the process was eating into the fleet manager’s time. Facebook Marketplace and similar selling channels created messages, no-shows, questions, scheduling problems, and distraction."
           },
           {
-            heading: "What iAutoAgent did",
+            heading: "The business problem",
+            body: "Selling vehicles matters, but the fleet manager should not have to become a part-time used vehicle salesperson while also keeping the fleet running."
+          },
+          {
+            type: "callout",
+            strong: "20–30% higher sale prices",
+            body: "The value was not just better sale outcomes. It was also getting the vehicle-selling burden off the fleet manager’s plate."
+          },
+          {
+            heading: "What iAutoAgent handled",
             body: "iAutoAgent took over the vehicle-selling process, including buyer communication, showing coordination, negotiation support, paperwork steps, and start-to-finish sale coordination."
           },
           {
             heading: "The result",
             body: "The fleet manager got time back, the business avoided marketplace chaos, and KCI achieved stronger selling outcomes than typical trade-in, auction, or do-it-yourself options."
+          },
+          {
+            heading: "Why it matters",
+            body: "Fleet selling should not create more stress, more messages, more no-shows, and more distraction. Fleet Smart turns vehicle selling into a handled process."
           }
         ]
       }
@@ -1668,7 +1850,7 @@
       }).join("") +
       '<div class="modal-actions">' +
         '<a class="btn btn-primary" href="tel:6366143711">Call or Text 636-614-3711</a>' +
-        '<a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Review">Request a Fleet Smart Review</a>' +
+        '<a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Free%20Fleet%20Smart%20Review">Request a Free Fleet Smart Review</a>' +
       '</div>';
 
       if (item.video) {
