@@ -492,58 +492,68 @@
 
     .case-video-preview {
       min-height: 245px;
-      background:
-        radial-gradient(circle at top left, rgba(127, 191, 63, 0.28), transparent 34%),
-        linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
       position: relative;
       overflow: hidden;
+      background-color: var(--purple-dark);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: flex-end;
     }
 
     .case-video-preview::before {
       content: "";
       position: absolute;
-      inset: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 22px;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(20, 12, 32, 0.12) 0%,
+        rgba(20, 12, 32, 0.34) 45%,
+        rgba(20, 12, 32, 0.82) 100%
+      );
     }
 
-    .play-badge {
+    .case-video-preview.no-thumb {
+      background-image:
+        radial-gradient(circle at top left, rgba(127, 191, 63, 0.24), transparent 34%),
+        linear-gradient(135deg, var(--purple), var(--purple-dark));
+    }
+
+    .case-video-label {
       position: relative;
       z-index: 1;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      gap: 14px;
+      width: 100%;
+      padding: 22px 22px 20px;
+      color: var(--white);
     }
 
-    .play-circle {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.16);
-      border: 2px solid rgba(255, 255, 255, 0.55);
-      display: grid;
-      place-items: center;
-      font-size: 30px;
-      line-height: 1;
-      padding-left: 4px;
+    .case-video-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
     }
 
-    .play-badge strong {
+    .case-video-label strong {
       display: block;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 1.2;
+      margin-bottom: 6px;
     }
 
-    .play-badge span {
+    .case-video-label span {
       display: block;
       font-size: 14px;
-      opacity: 0.82;
+      opacity: 0.88;
     }
 
     .process {
@@ -854,6 +864,10 @@
         grid-template-columns: 1fr;
       }
 
+      .case-video-preview {
+        min-height: 260px;
+      }
+
       .modal-header,
       .modal-body {
         grid-template-columns: 1fr;
@@ -912,7 +926,15 @@
       }
 
       .case-video-preview {
-        min-height: 210px;
+        min-height: 220px;
+      }
+
+      .case-video-label {
+        padding: 18px 18px 16px;
+      }
+
+      .case-video-label strong {
+        font-size: 19px;
       }
 
       .modal {
@@ -1137,11 +1159,11 @@
               <div class="case-metric">$200,000+ recovered over 5 years</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Watch the Rottler testimonial</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview" style="background-image: url('https://img.youtube.com/vi/LDEgY6pOG8o/maxresdefault.jpg');">
+              <div class="case-video-label">
+                <div class="case-video-chip">Video Testimonial</div>
+                <strong>Gary Rottler case study</strong>
+                <span>Tap to open full story and video</span>
               </div>
             </div>
           </button>
@@ -1157,11 +1179,11 @@
               <div class="case-metric">25 hours from first call to keys</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Watch the Horizon testimonial</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview" style="background-image: url('https://img.youtube.com/vi/tQrqg4TRsIU/maxresdefault.jpg');">
+              <div class="case-video-label">
+                <div class="case-video-chip">Video Testimonial</div>
+                <strong>Horizon Sign case study</strong>
+                <span>Tap to open full story and video</span>
               </div>
             </div>
           </button>
@@ -1177,11 +1199,11 @@
               <div class="case-metric">860-mile van sourced 1,200 miles away</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Case study video area</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview no-thumb">
+              <div class="case-video-label">
+                <div class="case-video-chip">Case Study</div>
+                <strong>Nationwide search result</strong>
+                <span>Tap to open full story</span>
               </div>
             </div>
           </button>
@@ -1197,11 +1219,11 @@
               <div class="case-metric">$16,000 in immediate repair exposure</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Case study video area</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview no-thumb">
+              <div class="case-video-label">
+                <div class="case-video-chip">Case Study</div>
+                <strong>Protection-plan result</strong>
+                <span>Tap to open full story</span>
               </div>
             </div>
           </button>
@@ -1217,11 +1239,11 @@
               <div class="case-metric">$5,000 in extras and $10,000 repair covered</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Watch David’s testimonial</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview no-thumb">
+              <div class="case-video-label">
+                <div class="case-video-chip">Client Videos</div>
+                <strong>Buying and protection story</strong>
+                <span>Tap to open links and details</span>
               </div>
             </div>
           </button>
@@ -1237,11 +1259,11 @@
               <div class="case-metric">20–30% higher sale prices</div>
             </div>
 
-            <div class="case-video-preview">
-              <div class="play-badge">
-                <div class="play-circle">▶</div>
-                <strong>Case study video area</strong>
-                <span>Click to open case study</span>
+            <div class="case-video-preview no-thumb">
+              <div class="case-video-label">
+                <div class="case-video-chip">Case Study</div>
+                <strong>Fleet-selling outcome</strong>
+                <span>Tap to open full story</span>
               </div>
             </div>
           </button>
