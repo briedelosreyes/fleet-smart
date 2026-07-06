@@ -6,7 +6,7 @@
 
   <title>Fleet Smart by iAutoAgent | Fleet Buying, Selling & Protection</title>
 
-  <meta name="description" content="Fleet Smart by iAutoAgent helps service businesses buy, sell, protect, upfit, and coordinate fleet vehicles without dealership games, wasted time, or leaving money on the table." />
+  <meta name="description" content="Fleet Smart by iAutoAgent helps service businesses buy, sell, and protect fleet vehicles with less downtime, less guesswork, and less money left on the table." />
 
   <style>
     :root {
@@ -205,7 +205,16 @@
       font-size: 21px;
       color: #34313a;
       max-width: 680px;
+      margin: 0 0 18px;
+    }
+
+    .hero-promise {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--purple);
+      max-width: 680px;
       margin: 0 0 28px;
+      line-height: 1.4;
     }
 
     .hero-actions {
@@ -251,32 +260,25 @@
       margin: 0 0 18px;
     }
 
-    .mini-stat {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .hero-card-highlight {
       margin-top: 20px;
-    }
-
-    .mini-stat div {
       background: var(--light);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 16px;
+      padding: 18px 20px;
     }
 
-    .mini-stat strong {
+    .hero-card-highlight strong {
       display: block;
       color: var(--purple);
-      font-size: 26px;
-      line-height: 1;
-      margin-bottom: 6px;
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 4px;
     }
 
-    .mini-stat span {
+    .hero-card-highlight span {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
+      font-size: 14px;
     }
 
     section {
@@ -323,9 +325,17 @@
       gap: 18px;
     }
 
+    .problem-punch {
+      max-width: 720px;
+      margin: 30px auto 0;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
     .problem-card,
-    .service-card,
-    .testimonial-card,
     .faq-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -335,8 +345,6 @@
     }
 
     .problem-card h3,
-    .service-card h3,
-    .testimonial-card h3,
     .faq-card h3 {
       margin: 0 0 10px;
       color: var(--purple);
@@ -345,8 +353,6 @@
     }
 
     .problem-card p,
-    .service-card p,
-    .testimonial-card p,
     .faq-card p {
       margin: 0;
       color: var(--muted);
@@ -398,9 +404,9 @@
 
     .horizontal-timeline {
       position: relative;
-      min-width: 1060px;
+      min-width: 760px;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
       padding-top: 46px;
     }
@@ -486,51 +492,25 @@
       line-height: 1.45;
     }
 
-    .timeline-note {
-      max-width: 860px;
-      margin: 26px auto 0;
+    .lifecycle-close {
+      max-width: 820px;
+      margin: 34px auto 0;
       text-align: center;
-      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: var(--white);
-      border-radius: 22px;
-      padding: 22px 26px;
-      box-shadow: var(--shadow);
     }
 
-    .timeline-note h3 {
-      margin: 0 0 6px;
-      color: var(--white);
-      font-size: 24px;
-      line-height: 1.15;
-    }
-
-    .timeline-note p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.9);
+    .lifecycle-close .audience-line {
+      color: var(--muted);
       font-size: 16px;
+      line-height: 1.5;
+      margin: 0 0 16px;
     }
 
-    .services {
-      background: var(--white);
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .service-number {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--purple);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      margin-bottom: 16px;
+    .lifecycle-close .closing-line {
+      color: var(--purple);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin: 0;
     }
 
     .proof {
@@ -578,7 +558,7 @@
       box-shadow: 0 12px 28px rgba(33, 18, 55, 0.08);
       padding: 0;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr auto;
       overflow: hidden;
       cursor: pointer;
       text-align: left;
@@ -595,6 +575,8 @@
 
     .case-copy {
       padding: 30px;
+      display: flex;
+      flex-direction: column;
     }
 
     .case-tag {
@@ -620,102 +602,93 @@
 
     .case-copy p {
       color: var(--muted);
-      font-size: 17px;
-      margin: 0 0 18px;
+      font-size: 16px;
+      margin: 0 0 12px;
+      line-height: 1.5;
+    }
+
+    .case-copy p strong {
+      color: var(--ink);
+    }
+
+    .case-solution strong {
+      color: var(--green-dark);
     }
 
     .case-metric {
+      margin-top: auto;
       padding-top: 16px;
       border-top: 1px solid var(--border);
       color: var(--purple);
       font-weight: 900;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.25;
     }
 
-    .case-video-preview {
-      min-height: 245px;
+    .case-thumb {
       position: relative;
+      align-self: center;
+      justify-self: center;
+      width: 200px;
+      height: 128px;
+      margin: 24px 24px 24px 0;
+      border-radius: 14px;
       overflow: hidden;
       background-color: var(--purple-dark);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .case-video-preview::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(20, 12, 32, 0.08) 0%,
-        rgba(20, 12, 32, 0.28) 45%,
-        rgba(20, 12, 32, 0.82) 100%
-      );
-    }
-
-    .case-video-preview.no-thumb {
       background-image:
-        radial-gradient(circle at top left, rgba(127, 191, 63, 0.24), transparent 34%),
+        radial-gradient(circle at top left, rgba(127, 191, 63, 0.28), transparent 42%),
         linear-gradient(135deg, var(--purple), var(--purple-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(20, 12, 32, 0.28);
     }
 
-    .case-video-label {
+    .case-thumb::after {
+      content: "Photo coming soon";
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .case-thumb[style*="url"]::after {
+      content: "";
+    }
+
+    .case-thumb-badge {
       position: relative;
       z-index: 1;
-      width: 100%;
-      padding: 22px 22px 20px;
-      color: var(--white);
-    }
-
-    .case-video-chip {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
+      gap: 6px;
+      padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: rgba(20, 12, 32, 0.55);
+      color: var(--white);
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(2px);
     }
 
-    .case-video-label strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    .case-video-label span {
-      display: block;
-      font-size: 14px;
-      opacity: 0.88;
-    }
-
-    .testimonials {
-      background: var(--white);
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .testimonial-card a {
-      margin-top: 16px;
-      display: inline-flex;
-      color: var(--purple);
-      font-weight: 900;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .case-thumb-badge.play::before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 10px;
+      border-color: transparent transparent transparent var(--white);
     }
 
     .faq {
@@ -879,19 +852,6 @@
       box-shadow: var(--shadow);
     }
 
-    .video-placeholder strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .video-placeholder span {
-      display: block;
-      opacity: 0.86;
-      font-size: 15px;
-    }
-
     .modal-layout {
       display: grid;
       grid-template-columns: 0.78fr 1.22fr;
@@ -983,6 +943,14 @@
       color: var(--white);
     }
 
+    .footer-contact {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
     @media (max-width: 980px) {
       .hero-inner,
       .modal-hero,
@@ -990,12 +958,7 @@
         grid-template-columns: 1fr;
       }
 
-      .service-grid,
       .proof-strip {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .testimonial-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1007,8 +970,11 @@
         grid-template-columns: 1fr;
       }
 
-      .case-video-preview {
-        min-height: 260px;
+      .case-thumb {
+        width: auto;
+        margin: 0 24px 24px;
+        height: 150px;
+        align-self: stretch;
       }
 
       .modal-snapshot {
@@ -1023,14 +989,36 @@
       .horizontal-timeline-wrap {
         margin-left: -4px;
         margin-right: -4px;
+        overflow-x: visible;
+        padding: 8px 0 0;
       }
 
       .horizontal-timeline {
-        min-width: 980px;
+        min-width: 0;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding-top: 0;
+        padding-left: 40px;
+      }
+
+      .horizontal-timeline::before {
+        top: 8px;
+        bottom: 8px;
+        left: 30px;
+        right: auto;
+        width: 4px;
+        height: auto;
+        background: linear-gradient(180deg, var(--purple), var(--green));
       }
 
       .timeline-step {
-        min-height: 190px;
+        min-height: 0;
+      }
+
+      .timeline-node {
+        top: 50%;
+        left: -40px;
+        transform: translateY(-50%);
       }
     }
 
@@ -1060,11 +1048,8 @@
         width: 100%;
       }
 
-      .mini-stat,
       .problem-grid,
-      .service-grid,
       .proof-strip,
-      .testimonial-grid,
       .faq-grid {
         grid-template-columns: 1fr;
       }
@@ -1086,17 +1071,45 @@
         font-size: 24px;
       }
 
-      .case-video-preview {
-        min-height: 220px;
+      .case-thumb {
+        height: 180px;
+      }
+
+      .horizontal-timeline-wrap {
+        overflow-x: visible;
+        padding: 8px 0 0;
       }
 
       .horizontal-timeline {
-        min-width: 900px;
+        min-width: 0;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding-top: 0;
+        padding-left: 34px;
+      }
+
+      .horizontal-timeline::before {
+        top: 8px;
+        bottom: 8px;
+        left: 26px;
+        right: auto;
+        width: 4px;
+        height: auto;
+        background: linear-gradient(180deg, var(--purple), var(--green));
       }
 
       .timeline-step {
-        min-height: 180px;
-        padding: 20px 16px 18px;
+        min-height: 0;
+        padding: 18px 18px 18px 20px;
+      }
+
+      .timeline-node {
+        top: 50%;
+        left: -34px;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
       }
 
       .timeline-step h3 {
@@ -1104,12 +1117,7 @@
       }
 
       .timeline-step p {
-        font-size: 13px;
-      }
-
-      .timeline-note {
-        text-align: left;
-        padding: 22px;
+        font-size: 14px;
       }
 
       .modal {
@@ -1144,8 +1152,7 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#lifecycle">Lifecycle</a>
-        <a href="#services">Services</a>
+        <a href="#lifecycle">What We Do</a>
         <a href="#proof">Case Studies</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1163,8 +1170,13 @@
           <h1>Your fleet is either making you money or <span>quietly costing you money.</span></h1>
 
           <p class="hero-lede">
-            Fleet Smart helps service businesses buy, upfit, protect, manage, and sell fleet vehicles with less downtime,
-            less guesswork, and less money left on the table.
+            Fleet Smart streamlines the entire process from start to finish. We help you acquire the right trucks and
+            vans, upfit them for the job, protect them from surprise repair bills, and sell them for stronger value
+            when it is time.
+          </p>
+
+          <p class="hero-promise">
+            We save you money when you buy, make you money when you sell, and handle everything in between.
           </p>
 
           <div class="hero-actions">
@@ -1178,29 +1190,15 @@
         </div>
 
         <aside class="hero-card">
-          <h2>End-to-end fleet vehicle support.</h2>
+          <h2>You run the business. We run the vehicles.</h2>
           <p>
-            We help you think through the full vehicle lifecycle: what to buy, when to protect it, how to upfit it,
-            when to replace it, and how to sell it for stronger returns.
+            One team managing the vehicle decisions that affect your time, downtime, and cash flow, so your crew
+            stays focused on the work instead of chasing trucks, dealers, and repairs.
           </p>
 
-          <div class="mini-stat">
-            <div>
-              <strong>$200K+</strong>
-              <span>Recovered for one fleet client with zero out of pocket.</span>
-            </div>
-            <div>
-              <strong>36</strong>
-              <span>Fleet vehicles sold for Rottler Pest Solutions.</span>
-            </div>
-            <div>
-              <strong>25 hrs</strong>
-              <span>From first call to keys in hand for Horizon Sign Company.</span>
-            </div>
-            <div>
-              <strong>20–30%</strong>
-              <span>Higher sale prices seen in fleet selling outcomes.</span>
-            </div>
+          <div class="hero-card-highlight">
+            <strong>$200K+ recovered</strong>
+            <span>for one fleet client, with zero out of pocket.</span>
           </div>
         </aside>
       </div>
@@ -1211,36 +1209,46 @@
         <div class="section-heading center">
           <h2>Most companies lose money on vehicles in three places.</h2>
           <p>
-            The problem is rarely one bad deal. It is a weak system repeated across every purchase, sale, repair decision,
-            and replacement cycle.
+            If trucks and vans run your business, they are also one of your largest uncontrolled costs. The losses
+            rarely show up as one bad deal. They leak out a few thousand dollars at a time, on every vehicle you buy,
+            hold, and sell.
           </p>
         </div>
 
         <div class="problem-grid">
           <article class="problem-card">
-            <h3>Selling too low</h3>
+            <h3>You sell too low</h3>
             <p>
-              Trade-ins, auctions, and leasing-company buybacks are easy. They can also leave thousands of dollars behind
-              on each truck or van.
+              When it is time to move a truck, you take the easy exit: a trade-in, an auction, or a leasing-company
+              buyback. You accept the first number offered, and that number is almost always thousands below what the
+              vehicle is worth. On the Rottler fleet, that gap ran about $8,900 per truck, given up again on every unit
+              they turned over.
             </p>
           </article>
 
           <article class="problem-card">
-            <h3>Buying under pressure</h3>
+            <h3>You buy under pressure</h3>
             <p>
-              When a vehicle goes down, owners rush. Rushed buying creates bad pricing, poor fit, weak warranty choices,
-              and costly downtime.
+              A truck dies or a new hire starts Monday, and the clock is already running. So you buy whatever is on the
+              lot, at whatever price the dealer names, with the wrong setup and a warranty nobody had time to read.
+              Reactive buying is expensive buying, and your team is the one stuck driving the compromise.
             </p>
           </article>
 
           <article class="problem-card">
-            <h3>Managing without a plan</h3>
+            <h3>You hold too long with no plan</h3>
             <p>
-              Vehicle buying, upfitting, protection, repair decisions, replacement timing, and resale are all connected.
-              Treating them separately creates waste.
+              With no replacement strategy, vehicles get kept until the repair bills, downtime, and roadside failures
+              pile up. By the time you finally react, you have paid twice: once for repairs you should have avoided, and
+              again in resale value that quietly disappeared while you waited.
             </p>
           </article>
         </div>
+
+        <p class="problem-punch">
+          Most owners never see the full number, because it never lands as one big bill. It leaves quietly, a few
+          thousand dollars at a time, until it is gone for good.
+        </p>
 
         <div class="inline-cta">
           <div>
@@ -1255,142 +1263,75 @@
     <section class="lifecycle" id="lifecycle">
       <div class="section-inner">
         <div class="section-heading center">
-          <h2>The Fleet Smart vehicle lifecycle</h2>
+          <h2>How Fleet Smart works</h2>
           <p>
-            One continuous fleet strategy from first review to final resale.
+            One call starts it. We handle sourcing, negotiating, upfitting, logistics, and selling. You do not call
+            dealers, chase paperwork, or juggle drop-offs. We do.
           </p>
         </div>
 
         <div class="horizontal-timeline-wrap">
           <div class="horizontal-timeline">
             <article class="timeline-step">
-              <div class="timeline-node">0</div>
-              <div class="timeline-kicker">Step 0</div>
-              <h3>Initial review</h3>
-              <p>
-                We learn what vehicles you have, what you need, and where money or time may be leaking.
-              </p>
-            </article>
-
-            <article class="timeline-step">
               <div class="timeline-node">1</div>
-              <div class="timeline-kicker">Step 1</div>
-              <h3>Fleet strategy</h3>
+              <div class="timeline-kicker">Free Fleet Review</div>
+              <h3>We review your fleet</h3>
               <p>
-                We map what to buy, sell, protect, replace, or hold.
+                We look at your current vehicles and tell you what to replace, what to sell, and what to leave alone.
+                No cost, no pressure.
               </p>
             </article>
 
             <article class="timeline-step">
               <div class="timeline-node">2</div>
-              <div class="timeline-kicker">Step 2</div>
-              <h3>Acquisition</h3>
+              <div class="timeline-kicker">Fleet Vehicle Finder</div>
+              <h3>We find and vet</h3>
               <p>
-                We help find, vet, negotiate, and coordinate the right truck or van.
+                Need a truck or van? We source it nationwide, check the history, and negotiate the deal. You approve it,
+                we handle the rest.
               </p>
             </article>
 
             <article class="timeline-step">
               <div class="timeline-node">3</div>
-              <div class="timeline-kicker">Step 3</div>
-              <h3>Upfitting</h3>
+              <div class="timeline-kicker">Upfitting + Delivery</div>
+              <h3>We get it road-ready</h3>
               <p>
-                We help coordinate wraps, shelving, GPS, telematics, and setup needs.
+                Shelving, racks, wraps, GPS, cameras: we coordinate every piece through our partners, so you never
+                chase an installer or schedule an install. Then it is your call. Swing by and grab it, or we will have
+                it show up at your shop or driveway, ready to work. No calls, no coordinating, no lost afternoons. It
+                just arrives.
               </p>
             </article>
 
             <article class="timeline-step">
               <div class="timeline-node">4</div>
-              <div class="timeline-kicker">Step 4</div>
-              <h3>Protection</h3>
+              <div class="timeline-kicker">Fleet Sell Smart</div>
+              <h3>We sell when you are ready</h3>
               <p>
-                We review which vehicles make sense to protect and which ones do not.
-              </p>
-            </article>
-
-            <article class="timeline-step">
-              <div class="timeline-node">5</div>
-              <div class="timeline-kicker">Step 5</div>
-              <h3>Resale</h3>
-              <p>
-                When it is time to sell, we handle the process so your team does not have to.
+                When it is time to move a vehicle on, we handle the listing, the buyer, and the paperwork. Most clients
+                net 20 to 30% more than a dealer trade-in, at no cost to them.
               </p>
             </article>
           </div>
         </div>
 
-        <div class="timeline-note">
-          <h3>From acquisition to resale, we keep the fleet process moving.</h3>
-          <p>
-            You stay focused on running the business. Fleet Smart helps manage the vehicle decisions that affect time,
-            cash flow, downtime, and resale value.
+        <div class="lifecycle-close">
+          <p class="audience-line">
+            Built for service businesses running company trucks and vans: HVAC, plumbing, electrical, roofing, pest
+            control, construction, and more.
+          </p>
+          <p class="closing-line">
+            Your fleet should keep your business moving forward, not pull you away from running it.
           </p>
         </div>
 
         <div class="inline-cta">
           <div>
-            <h3>Fleet vehicles should have a strategy, not just a disposal plan.</h3>
-            <p>We help you think through the full lifecycle before the next truck becomes an emergency.</p>
+            <h3>Running 5 trucks or 50?</h3>
+            <p>It all starts with one call. Get a free Fleet Review, no cost and no pressure.</p>
           </div>
-          <a class="btn btn-secondary" href="tel:6366143711">Call or Text 636-614-3711</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="section-inner">
-        <div class="section-heading">
-          <h2>What Fleet Smart handles</h2>
-          <p>
-            Each service is built around the result business owners care about: less wasted time, less downtime, stronger resale,
-            and fewer expensive vehicle mistakes.
-          </p>
-        </div>
-
-        <div class="service-grid">
-          <article class="service-card">
-            <div class="service-number">1</div>
-            <h3>Fleet Sell Smart</h3>
-            <p>
-              Sell aging trucks and vans for an average of 20–30% more compared to typical alternatives, without your team
-              managing buyers, no-shows, negotiation, or paperwork.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">2</div>
-            <h3>Fleet Vehicle Finder</h3>
-            <p>
-              Avoid rushed purchases, dealer games, bad-fit vehicles, and downtime by letting us find, vet, negotiate,
-              and coordinate the right vehicle.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">3</div>
-            <h3>Upfitting Coordination</h3>
-            <p>
-              Get the vehicle work-ready faster by coordinating wraps, shelving, GPS, telematics, and setup details that
-              usually slow businesses down.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">4</div>
-            <h3>Vehicle Protection Plans</h3>
-            <p>
-              Reduce surprise repair exposure by reviewing which vehicles are worth protecting and which ones are better
-              candidates for replacement.
-            </p>
-          </article>
-        </div>
-
-        <div class="inline-cta">
-          <div>
-            <h3>Need help with one vehicle or the whole fleet?</h3>
-            <p>Fleet Smart can start with one truck, one van, one sale, or a full lifecycle strategy.</p>
-          </div>
-          <a class="btn btn-primary" href="mailto:info@iautoagent.com?subject=Fleet%20Smart%20Services">Talk Through My Fleet</a>
+          <a class="btn btn-primary" href="mailto:info@iautoagent.com?subject=Free%20Fleet%20Review">Request a Free Fleet Review</a>
         </div>
       </div>
     </section>
@@ -1400,7 +1341,7 @@
         <div class="section-heading center">
           <h2>Real fleet results</h2>
           <p>
-            Click any case study below. A larger popup will open with the full story and video area.
+            Click any case study for the full story and video.
           </p>
         </div>
 
@@ -1421,8 +1362,8 @@
           </div>
 
           <div class="proof-box">
-            <strong>$16K</strong>
-            <span>Immediate repair risk addressed for an electrical contractor.</span>
+            <strong>$10K</strong>
+            <span>Transmission repair covered by a protection plan for Shield ProHS.</span>
           </div>
         </div>
 
@@ -1431,119 +1372,64 @@
             <div class="case-copy">
               <div class="case-tag">Fleet Sell Smart</div>
               <h3>Rottler Pest Solutions</h3>
-              <p>
-                Rottler had trucks being bought back low and resold much higher. iAutoAgent took over the selling process
-                and helped recover serious value across the fleet.
-              </p>
-              <div class="case-metric">$200,000+ recovered with zero out of pocket</div>
+              <p class="case-problem"><strong>The problem:</strong> Gary was sending aging trucks back to his
+                leasing company for around $1,500. The same trucks were reselling for about $10,000. That $8,900 gap
+                was walking out the door on every vehicle he replaced.</p>
+              <p class="case-solution"><strong>What we did:</strong> We took over the entire selling process,
+                inspection to final paperwork, so his team never touched it. Same trucks, sold the right way.</p>
+              <div class="case-metric">$200,000+ recovered across 36 trucks over 5 years</div>
             </div>
 
-            <div class="case-video-preview" style="background-image: url('https://img.youtube.com/vi/LDEgY6pOG8o/maxresdefault.jpg');">
-              <div class="case-video-label">
-                <div class="case-video-chip">Video Testimonial</div>
-                <strong>Gary Rottler case study</strong>
-                <span>Tap to open full story and video</span>
-              </div>
+            <div class="case-thumb" style="background-image: url('https://img.youtube.com/vi/LDEgY6pOG8o/hqdefault.jpg');">
+              <span class="case-thumb-badge play">Watch</span>
             </div>
           </button>
 
           <button class="case-row" type="button" data-case="horizon">
             <div class="case-copy">
-              <div class="case-tag">Vehicle Finder</div>
+              <div class="case-tag">Fleet Vehicle Finder</div>
               <h3>Horizon Sign Company</h3>
-              <p>
-                David and Megan needed the right truck fast. We found, vetted, negotiated, and coordinated a 2019 Ford F-250
-                without wasting their workweek.
-              </p>
-              <div class="case-metric">25 hours from first call to keys</div>
+              <p class="case-problem"><strong>The problem:</strong> David and Megan needed a truck fast and could not
+                afford to lose a workweek calling dealers, comparing listings, and sitting in finance offices.</p>
+              <p class="case-solution"><strong>What we did:</strong> We found a clean 2019 F-250 with 76K miles,
+                vetted it, negotiated it, and set up a protection plan before they drove off, all in a day and a half.</p>
+              <div class="case-metric">25 hours from first call to keys in hand</div>
             </div>
 
-            <div class="case-video-preview" style="background-image: url('https://img.youtube.com/vi/tQrqg4TRsIU/maxresdefault.jpg');">
-              <div class="case-video-label">
-                <div class="case-video-chip">Video Testimonial</div>
-                <strong>Horizon Sign case study</strong>
-                <span>Tap to open full story and video</span>
-              </div>
-            </div>
-          </button>
-
-          <button class="case-row" type="button" data-case="coolaire">
-            <div class="case-copy">
-              <div class="case-tag">Nationwide Search</div>
-              <h3>Coolaire HVAC</h3>
-              <p>
-                A flooded van created an urgent replacement need. We sourced a rare 2018 Chevy Express with only 860 miles
-                from New York and coordinated delivery to Missouri.
-              </p>
-              <div class="case-metric">860-mile van sourced 1,200 miles away</div>
-            </div>
-
-            <div class="case-video-preview no-thumb">
-              <div class="case-video-label">
-                <div class="case-video-chip">Case Study</div>
-                <strong>Nationwide search result</strong>
-                <span>Tap to open full story</span>
-              </div>
-            </div>
-          </button>
-
-          <button class="case-row" type="button" data-case="loveland">
-            <div class="case-copy">
-              <div class="case-tag">Protection Plan</div>
-              <h3>Loveland Home Solutions</h3>
-              <p>
-                Two trucks had major repair issues at the same time. We helped identify which vehicles made sense to protect
-                and which needed a different replacement plan.
-              </p>
-              <div class="case-metric">$16,000 in immediate repair exposure addressed</div>
-            </div>
-
-            <div class="case-video-preview no-thumb">
-              <div class="case-video-label">
-                <div class="case-video-chip">Case Study</div>
-                <strong>Protection-plan result</strong>
-                <span>Tap to open full story</span>
-              </div>
+            <div class="case-thumb" style="background-image: url('https://img.youtube.com/vi/tQrqg4TRsIU/hqdefault.jpg');">
+              <span class="case-thumb-badge play">Watch</span>
             </div>
           </button>
 
           <button class="case-row" type="button" data-case="davidtrue">
             <div class="case-copy">
-              <div class="case-tag">Finder + Protection</div>
-              <h3>David True</h3>
-              <p>
-                David needed a work-ready pickup for his handyman business. We found one with the right topper, rack,
-                Decked system, and protection plan.
-              </p>
-              <div class="case-metric">$5,000 in extras and $10,000 repair covered</div>
+              <div class="case-tag">Vehicle Finder + Protection</div>
+              <h3>Shield ProHS</h3>
+              <p class="case-problem"><strong>The problem:</strong> Starting his handyman business, David needed a
+                specific work-ready pickup with a topper, rack, and bed storage. That setup is not sitting on every lot.</p>
+              <p class="case-solution"><strong>What we did:</strong> We found the exact truck with about $5,000 in
+                extras already installed, then added a protection plan that later covered a $10,000 transmission repair.</p>
+              <div class="case-metric">$5,000 in extras included, $10,000 repair covered</div>
             </div>
 
-            <div class="case-video-preview no-thumb">
-              <div class="case-video-label">
-                <div class="case-video-chip">Client Videos</div>
-                <strong>Buying and protection story</strong>
-                <span>Tap to open links and details</span>
-              </div>
+            <div class="case-thumb" style="background-image: url('https://img.youtube.com/vi/vRGvjFsbTeg/hqdefault.jpg');">
+              <span class="case-thumb-badge play">Watch</span>
             </div>
           </button>
 
           <button class="case-row" type="button" data-case="kci">
             <div class="case-copy">
-              <div class="case-tag">Fleet Selling Support</div>
+              <div class="case-tag">Fleet Sell Smart</div>
               <h3>KCI Construction</h3>
-              <p>
-                KCI needed vehicle selling off the fleet manager’s plate. We reduced marketplace chaos and helped the team
-                stay focused on running the business.
-              </p>
-              <div class="case-metric">20–30% higher sale prices</div>
+              <p class="case-problem"><strong>The problem:</strong> Their fleet manager was selling company vehicles
+                himself on Facebook Marketplace, drowning in messages, no-shows, and scheduling on top of his real job.</p>
+              <p class="case-solution"><strong>What we did:</strong> We took the entire selling process off his plate,
+                from listing to negotiation to paperwork, so he could get back to running the fleet.</p>
+              <div class="case-metric">20 to 30% higher sale prices, zero Marketplace chaos</div>
             </div>
 
-            <div class="case-video-preview no-thumb">
-              <div class="case-video-label">
-                <div class="case-video-chip">Case Study</div>
-                <strong>Fleet-selling outcome</strong>
-                <span>Tap to open full story</span>
-              </div>
+            <div class="case-thumb" style="background-image: url('https://img.youtube.com/vi/icsaG6oxuEQ/hqdefault.jpg');">
+              <span class="case-thumb-badge play">Watch</span>
             </div>
           </button>
         </div>
@@ -1553,39 +1439,7 @@
             <h3>Your fleet may already have money sitting in it.</h3>
             <p>Before you trade in, auction, or hand back another truck, get a second look.</p>
           </div>
-          <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Fleet%20Case%20Study%20Review">Review My Fleet</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials">
-      <div class="section-inner">
-        <div class="section-heading center">
-          <h2>Fleet Smart client videos</h2>
-          <p>
-            Hear directly from business owners and fleet clients who worked with iAutoAgent.
-          </p>
-        </div>
-
-        <div class="testimonial-grid">
-          <article class="testimonial-card">
-            <h3>David True</h3>
-            <p>Fleet vehicle buying and vehicle protection plan experience.</p>
-            <a href="https://photos.app.goo.gl/3d34C3zge7fpKD6N9" target="_blank" rel="noopener">Watch buying testimonial</a>
-            <a href="https://photos.app.goo.gl/S2zHyaTRDVtpQBRz8" target="_blank" rel="noopener">Watch protection-plan testimonial</a>
-          </article>
-
-          <article class="testimonial-card">
-            <h3>David Greathouse</h3>
-            <p>Horizon Sign Company truck buying experience.</p>
-            <a href="https://youtu.be/tQrqg4TRsIU?si=uNt9L0pv8oQsB9lx" target="_blank" rel="noopener">Watch testimonial</a>
-          </article>
-
-          <article class="testimonial-card">
-            <h3>Gary Rottler</h3>
-            <p>Fleet selling experience with iAutoAgent.</p>
-            <a href="https://youtu.be/LDEgY6pOG8o?si=pVOwa-aHCTJh-F3U" target="_blank" rel="noopener">Watch testimonial</a>
-          </article>
+          <a class="btn btn-secondary" href="mailto:info@iautoagent.com?subject=Free%20Fleet%20Smart%20Review">Request a Free Fleet Smart Review</a>
         </div>
       </div>
     </section>
@@ -1609,9 +1463,10 @@
           </article>
 
           <article class="faq-card">
-            <h3>Do we have to sell multiple vehicles?</h3>
+            <h3>Do we need a large fleet to work with you?</h3>
             <p>
-              No. Fleet Smart can help with one vehicle, a group of vehicles, or a long-term replacement plan.
+              Fleet Smart is built for businesses running multiple vehicles, where buying, selling, and replacement
+              timing add up. Not sure if that is you? A quick call will tell us.
             </p>
           </article>
 
@@ -1625,7 +1480,8 @@
           <article class="faq-card">
             <h3>Do you only help with selling?</h3>
             <p>
-              No. Fleet Smart covers buying, selling, upfitting coordination, protection-plan review, and fleet vehicle strategy.
+              No. Fleet Smart covers buying, selling, protection plan review, and overall fleet vehicle strategy,
+              including upfitting coordination when you buy through us.
             </p>
           </article>
         </div>
@@ -1679,7 +1535,8 @@
 
   <footer>
     <strong>Fleet Smart by iAutoAgent</strong><br />
-    Fleet buying, selling, protection, upfitting, and coordination for service businesses.
+    Helping service businesses buy and sell fleet vehicles with less hassle and better outcomes.<br />
+    <span class="footer-contact">636-614-3711 &nbsp;|&nbsp; fleet.iautoagent.com</span>
   </footer>
 
   <script>
@@ -1779,6 +1636,7 @@
         title: "Coolaire HVAC found a rare 860-mile van 1,200 miles away.",
         intro: "A flooded fleet van created an urgent replacement need. Local inventory did not have the right vehicle.",
         video: "",
+        videoTitle: "",
         snapshot: [
           "Client: HVAC company",
           "Service: Fleet Platinum Vehicle Finder",
@@ -1821,6 +1679,7 @@
         title: "Loveland Home Solutions reduced major repair-bill exposure.",
         intro: "Two fleet trucks broke down at the same time. Each had roughly $8,000 in repair exposure.",
         video: "",
+        videoTitle: "",
         snapshot: [
           "Client: Electrical contractor",
           "Service: Vehicle Protection Plan",
@@ -1860,21 +1719,12 @@
 
       davidtrue: {
         tag: "Finder + Protection",
-        title: "David True found a work-ready truck and protected his cash flow.",
-        intro: "David needed a specific setup for his handyman business, not just any pickup.",
-        video: "",
-        externalLinks: [
-          {
-            label: "Watch David’s buying testimonial",
-            url: "https://photos.app.goo.gl/3d34C3zge7fpKD6N9"
-          },
-          {
-            label: "Watch David’s protection-plan testimonial",
-            url: "https://photos.app.goo.gl/S2zHyaTRDVtpQBRz8"
-          }
-        ],
+        title: "Shield ProHS found a work-ready truck and protected cash flow.",
+        intro: "Shield ProHS needed a specific work-ready pickup, not just any truck on a lot.",
+        video: "https://www.youtube.com/embed/vRGvjFsbTeg",
+        videoTitle: "Shield ProHS Fleet Smart Testimonial",
         snapshot: [
-          "Client: David True",
+          "Client: Shield ProHS",
           "Service: Vehicle Finder + Protection Plan",
           "Vehicle need: Work-ready pickup",
           "Extras: Topper, rack, and Decked cargo system",
@@ -1884,7 +1734,7 @@
         sections: [
           {
             heading: "The specific need",
-            body: "David was starting a handyman business and needed a pickup that could work from day one. He needed organized storage, a topper, and a setup that matched real job-site needs."
+            body: "Shield ProHS needed a pickup that could work from day one. The vehicle needed organized storage, a topper, and a setup that matched real job-site needs."
           },
           {
             heading: "The problem with buying too fast",
@@ -1901,7 +1751,7 @@
           },
           {
             heading: "The result",
-            body: "David got a work-ready pickup with about $5,000 in useful extras already included. Later, when the transmission went out, the protection plan covered a repair that could have cost about $10,000 out of pocket."
+            body: "Shield ProHS got a work-ready pickup with about $5,000 in useful extras already included. Later, when the transmission went out, the protection plan covered a repair that could have cost about $10,000 out of pocket."
           },
           {
             heading: "Why it matters",
@@ -1914,7 +1764,8 @@
         tag: "Fleet Selling Support",
         title: "KCI Construction got vehicle selling off the fleet manager’s plate.",
         intro: "The fleet manager was trying to sell company vehicles himself while also managing his actual job.",
-        video: "",
+        video: "https://www.youtube.com/embed/icsaG6oxuEQ",
+        videoTitle: "KCI Construction Fleet Smart Testimonial",
         snapshot: [
           "Client: KCI Construction",
           "Service: Fleet Sell Smart",
