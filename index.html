@@ -81,22 +81,29 @@
       gap: 18px;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
+    .brand-logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 7px 10px;
+      box-shadow: 0 8px 18px rgba(33, 18, 55, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       min-width: fit-content;
     }
 
-    .brand strong {
-      color: var(--purple);
-      font-size: 22px;
-      letter-spacing: -0.03em;
+    .brand-logo-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(33, 18, 55, 0.12);
+      border-color: rgba(97, 45, 145, 0.24);
     }
 
-    .brand span {
-      color: var(--muted);
-      font-size: 13px;
+    .brand-logo-link img {
+      display: block;
+      width: 168px;
+      height: auto;
     }
 
     .nav-links {
@@ -117,30 +124,6 @@
       justify-content: flex-end;
       gap: 14px;
       min-width: fit-content;
-    }
-
-    .main-logo-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 7px 10px;
-      box-shadow: 0 8px 18px rgba(33, 18, 55, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .main-logo-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(33, 18, 55, 0.12);
-      border-color: rgba(97, 45, 145, 0.24);
-    }
-
-    .main-logo-link img {
-      display: block;
-      width: 168px;
-      height: auto;
     }
 
     .btn {
@@ -1000,7 +983,7 @@
         display: none;
       }
 
-      .main-logo-link img {
+      .brand-logo-link img {
         width: 142px;
       }
 
@@ -1070,25 +1053,17 @@
         gap: 10px;
       }
 
-      .brand strong {
-        font-size: 18px;
-      }
-
-      .brand span {
-        font-size: 12px;
-      }
-
       .nav-actions .btn {
         display: none;
       }
 
-      .main-logo-link {
+      .brand-logo-link {
         padding: 6px 8px;
         border-radius: 12px;
       }
 
-      .main-logo-link img {
-        width: 118px;
+      .brand-logo-link img {
+        width: 128px;
       }
 
       .hero {
@@ -1202,9 +1177,8 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Fleet Smart by iAutoAgent">
-        <strong>Fleet Smart</strong>
-        <span>by iAutoAgent</span>
+      <a class="brand-logo-link" href="https://www.iautoagent.com/" target="_blank" rel="noopener" aria-label="Go to iAutoAgent home page">
+        <img src="assets/iautoagent-logo.png" alt="iAutoAgent" />
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
@@ -1215,10 +1189,6 @@
 
       <div class="nav-actions">
         <a class="btn btn-primary" href="tel:6366143711">Call or Text Us</a>
-
-        <a class="main-logo-link" href="https://www.iautoagent.com/" target="_blank" rel="noopener" aria-label="Go to iAutoAgent home page">
-          <img src="assets/iautoagent-logo.png" alt="iAutoAgent" />
-        </a>
       </div>
     </div>
   </header>
