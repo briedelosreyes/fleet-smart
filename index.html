@@ -342,6 +342,23 @@
       gap: 18px;
     }
 
+    #pricing {
+      scroll-margin-top: 90px;
+    }
+
+    #pricing .problem-card ul {
+      padding-inline-start: 1.25rem;
+      color: var(--muted);
+    }
+
+    #pricing .problem-card li + li {
+      margin-top: 0.5rem;
+    }
+
+    #pricing .pricing-action {
+      margin: 30px auto 0;
+    }
+
     .problem-punch {
       max-width: 720px;
       margin: 30px auto 0;
@@ -1183,6 +1200,7 @@
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#lifecycle">What We Do</a>
+        <a href="#pricing">Pricing</a>
         <a href="#proof">Case Studies</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1363,6 +1381,49 @@
             <h3>Running 5 trucks or 50?</h3>
             <p>It all starts with one call. Get a free Fleet Review, no cost and no pressure.</p>
           </div>
+          <a class="btn btn-primary" href="https://www.iautoagent.com/fleet">Request a Free Fleet Review</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" aria-labelledby="pricing-heading">
+      <div class="section-inner">
+        <div class="section-heading center">
+          <h2 id="pricing-heading">Fleet Vehicle Finder Packages</h2>
+          <p>Choose how much help you want buying a new or used work vehicle.</p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card">
+            <h3>Silver · $897</h3>
+            <p><strong>Paid in full</strong></p>
+            <ul>
+              <li>You find the vehicle. We review its history and pricing.</li>
+              <li>Get a discovery call, trade-in advice, and unlimited advice calls for 30 days.</li>
+              <li>Get help finding competitive financing rates and access to vehicle protection plan pricing.</li>
+            </ul>
+          </article>
+          <article class="problem-card">
+            <h3>Gold · $1,097</h3>
+            <p><strong>Paid in full</strong></p>
+            <ul>
+              <li>We find and fully vet vehicles for you.</li>
+              <li>Get negotiation on up to three vehicles, three history and pricing analyses, and test-drive scheduling.</li>
+              <li>Get unlimited advice calls for 60 days, plus Silver’s trade-in, financing, and protection plan support.</li>
+            </ul>
+          </article>
+          <article class="problem-card">
+            <h3>Platinum · $1,995</h3>
+            <p><strong>Includes Gold services, plus:</strong></p>
+            <ul>
+              <li>Unlimited negotiation, history and pricing analyses, and advice calls with no expiration.</li>
+              <li>We arrange mechanical inspections, transport, and delivery.</li>
+              <li>Get support after the sale.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="section-heading center pricing-action">
           <a class="btn btn-primary" href="https://www.iautoagent.com/fleet">Request a Free Fleet Review</a>
         </div>
       </div>
